@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BookingApi.database
 {
-    public class Bookingdb : IdentityDbContext<User>
+    public class Bookingdb : IdentityDbContext
     {
-        public Bookingdb()
-        {
-        }
+       
 
         public Bookingdb(DbContextOptions<Bookingdb> options)
             : base(options)
