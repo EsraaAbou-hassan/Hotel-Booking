@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookingApi.ViewModel
+namespace BookingApi.DTO
 {
-    public class LoginViewModel
+    public class LoginDto
     {
         [Required]
         public string UserName { get; set; }
@@ -10,6 +10,5 @@ namespace BookingApi.ViewModel
         [DataType(DataType.Password, ErrorMessage = "Password must be more than 6 letters and contain lower and uper CHaracter")]
 
         public string Password { get; set; }
-        public bool IsPersisite{ get; set; }
     }
 }

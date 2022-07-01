@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using BookingApi.ViewModel;
+
 using BookingApi.Models;
 using BookingApi.database;
 using Microsoft.EntityFrameworkCore;
