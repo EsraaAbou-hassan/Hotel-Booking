@@ -1,24 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BookingApi.Models
+namespace BookingApi.ViewModel
 {
-    public class Room
+    public class RoomViewModel
     {
-        public int RoomId { get; set; }
-
         [Required]
         public string title { get; set; }
-       
-
         [Required]
+
+       
         public int maxPeople { get; set; }
         [Required]
         public string description { get; set; }
         [Required]
         public int roomNumber { get; set; }
+        [Required]
 
-        public IList<RoomsInHotel> RoomsInHotel { get; set; }
-
+        public int HotelId { get; set; }
+        [Required]
+        
+        public int Price { get; set; }
+        public string[] Images { get; set; }
     }
 }

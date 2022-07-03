@@ -34,6 +34,8 @@ namespace BookingApi.Controllers
 
         {
             User user = new User();
+            user.FirstName = newAcount.FirstName;
+            user.LastName = newAcount.LastName;
             user.UserName = newAcount.UserName;
             user.Email = newAcount.Email;
             user.city = newAcount.city;

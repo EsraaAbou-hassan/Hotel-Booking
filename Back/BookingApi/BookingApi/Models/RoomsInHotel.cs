@@ -2,15 +2,14 @@
 
 namespace BookingApi.Models
 {
-    public class RoomAvailabe
+    public class RoomsInHotel
     {
 
         public int RoomId { get; set; }
 
         public int HotelId { get; set; }
 
-        public DateTime Date { get; set; }
-        public bool isAvalable { get; set; } = true;
+        public int Price { get; set; }
         public virtual Room Room { get; set; }
         public virtual Hotel Hotel { get; set; }
       

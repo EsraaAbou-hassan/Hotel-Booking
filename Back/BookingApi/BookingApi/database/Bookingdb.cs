@@ -22,7 +22,7 @@ namespace BookingApi.database
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<BookingRoomToUser>().HasKey(sc => new { sc.UserId, sc.RoomId });
-            modelBuilder.Entity<RoomAvailabe>().HasKey(sc => new { sc.HotelId, sc.RoomId });
+            modelBuilder.Entity<RoomsInHotel>().HasKey(sc => new { sc.HotelId, sc.RoomId });
 
         }
         public void ConfigureServices(IServiceCollection services)
@@ -58,7 +58,7 @@ namespace BookingApi.database
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<RoomAvailabe>  RoomAvailabes { get; set; }
+        public virtual DbSet<RoomsInHotel> RoomsInHotel { get; set; }
         public virtual DbSet<BookingRoomToUser> BookingRoomToUser { get; set; }
         public virtual DbSet<RoomImages> RoomImages { get; set; }
         public virtual DbSet<HoteImages> HoteImages { get; set; }

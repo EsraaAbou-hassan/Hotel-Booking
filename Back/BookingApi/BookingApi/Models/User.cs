@@ -5,8 +5,11 @@ namespace BookingApi.Models
     public class User : IdentityUser
     {
 
+        [Required]
+        public string FirstName { get; set; }
 
-
+        [Required]
+        public string LastName { get; set; }
 
         public string country { get; set; }
 
@@ -15,7 +18,6 @@ namespace BookingApi.Models
 
         public string img { get; set; }
 
-        //public bool isAdmin { get; set; } = false;
 
 
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BookingApi.Models;
+using BookingApi.ViewModel;
 using BookingApi.database;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -55,19 +56,48 @@ namespace BookingApi.Controllers
 
         // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutHotel(int id, Hotel hotel)
+        [HttpPut("Update/{id}")]
+        public async Task<IActionResult> PutHotel(int id, HotelViewModel hotel)
         {
-            if (id != hotel.HotelId)
+            Hotel oldhotel= await _context.Hotels.FindAsync(id);
+            List<HoteImages> oldImages = await _context.HoteImages.ToListAsync();
+            if (id != oldhotel.HotelId)
             {
                 return BadRequest();
             }
+            oldhotel.name = hotel.name!="string"?hotel.name:oldhotel.name;
+            oldhotel.type = hotel.type != "string" ? hotel.type : oldhotel.type;
+            oldhotel.city = hotel.city != "string" ? hotel.city : oldhotel.city;
 
-            _context.Entry(hotel).State = EntityState.Modified;
+            oldhotel.address = hotel.address != "string" ? hotel.address : oldhotel.address;
+            oldhotel.distance = hotel.distance != "string" ? hotel.distance : oldhotel.distance;
+
+            oldhotel.description = hotel.description != "string" ? hotel.description : oldhotel.description;
+            oldhotel.featured = hotel.featured != true ? hotel.featured : oldhotel.featured;
+            oldhotel.cheapestPrice = hotel.cheapestPrice != 0 ? hotel.cheapestPrice: oldhotel.cheapestPrice;
+            oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
+            oldhotel.title = hotel.title != "string" ? hotel.title : oldhotel.title;
+        
+            _context.Entry(oldhotel).State = EntityState.Modified;
+            for (var i = 0; i < hotel.Images?.Length; i++)
+            {
+
+                if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+                {
+                    HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+
+
+                    HotelImages.Name = hotel.Images[i] != "string" ? hotel.Images[i] : oldImages[i].Name;
+                    _context.Entry(HotelImages).State = EntityState.Modified;
+                }
+
+                
+            }
 
             try
             {
                 await _context.SaveChangesAsync();
+                return Ok("Data Updated Successfully");
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -86,17 +116,45 @@ namespace BookingApi.Controllers
 
         // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Hotel>> PostHotel(Hotel hotel)
+        [HttpPost("Add")]
+        public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
         {
+            Hotel newhotel = new Hotel();
+            HoteImages HotelImages ;
+            newhotel.name = hotel.name;
+            newhotel.type = hotel.type;
+            newhotel.city = hotel.city;
+
+            newhotel.address = hotel.address;
+            newhotel.distance = hotel.distance;
+
+            newhotel.description=hotel.description;
+            newhotel.featured= hotel.featured;
+            newhotel.cheapestPrice= hotel.cheapestPrice;
+            newhotel.rating= hotel.rating;
+            newhotel.title= hotel.title;
+
+            
+
+
+
           if (_context.Hotels == null)
           {
               return Problem("Entity set 'Bookingdb.Hotels'  is null.");
           }
-            _context.Hotels.Add(hotel);
+            _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
+            for (var i=0;i< hotel.Images.Length;i++)
+            {
+                HotelImages = new HoteImages();
+                HotelImages.HotelId = newhotel.HotelId;
+                HotelImages.Name = hotel.Images[i];
+                _context.HoteImages.Add(HotelImages);
+                await _context.SaveChangesAsync();
+                return Ok("Data Added Successfully");
+            }
 
-            return CreatedAtAction("GetHotel", new { id = hotel.HotelId }, hotel);
+            return CreatedAtAction("GetHotel", new { id = newhotel.HotelId }, hotel);
         }
 
         // DELETE: api/Hotels/5
@@ -113,10 +171,35 @@ namespace BookingApi.Controllers
                 return NotFound();
             }
 
-            _context.Hotels.Remove(hotel);
-            await _context.SaveChangesAsync();
+             else
+            {
+                _context.Hotels.Remove(hotel);
+                List<HoteImages> HoteImages = _context.HoteImages.ToList();
+                for (var i = 0; i < HoteImages.Count; i++)
+                {
+                    HoteImages r = _context.HoteImages.FirstOrDefault(d => d.HotelId == id);
+                    _context.HoteImages.Remove(r);
 
-            return NoContent();
+                }
+
+
+
+
+
+                List<RoomsInHotel> roomsInHotels = _context.RoomsInHotel.ToList();
+                for (var h = 0; h < roomsInHotels.Count; h++)
+                {
+                    RoomsInHotel  roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId);
+                    _context.RoomsInHotel.Remove(roomsInHotel);
+
+                }
+                await _context.SaveChangesAsync();
+
+                return Ok("data deleted Successfully");
+
+            }
+
+            
         }
 
         private bool HotelExists(int id)
