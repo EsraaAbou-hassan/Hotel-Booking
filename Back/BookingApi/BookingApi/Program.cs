@@ -35,7 +35,7 @@ builder.Services.AddSwaggerGen(swagger =>
     swagger.SwaggerDoc("v2", new OpenApiInfo
     {
         Version = "v1",
-        Title = "ASP.NET 6 Web API",
+        Title = "Booking",
         Description = "Hotel Booking"
     });
 
@@ -73,7 +73,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(o=>o.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking v1"));
 }
 
 app.UseHttpsRedirection();
