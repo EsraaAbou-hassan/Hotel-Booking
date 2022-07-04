@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #327885;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+    margin-top: -300px;
+    padding: 0;
+    
+    .ready {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+        background-color: #2a5a62;
+        box-shadow: -10px -10px 0px rgba(102, 102, 102, 0.5);
+        transform: translateY(-30px);
+        padding: 10px 40px;
+       strong{
+        color: #fff;
+       }
+        button{
+            width: 120px;
+            border: none;
+            height: 45px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+      
+    }
+    h5{
+        color: #fff;
+    }
+    .links{
+        strong{
+            color: #fff;
+        }
+    }
+    p{
+        color: #c8e5eb;
+    }
+    p:hover{
+        color: #fff;
+        cursor: pointer;
+    }
+    .icons{
+        i{
+            font-size: 25px;
+            color: #fff;
+            margin-top: 5px;
+        }
+        .facebook{
+            i{
+                color: #c9d4ed;
+            }
+
+        }
+        .insta{
+            i{
+                color:#f2c2d2;
+            }
+        }
+    }
+    
+    input{
+        border: none;
+        height: 45px;
+        padding: 10px;
+        width: 50%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .features{
+        button{
+            height: 45px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: none;
+            background-color: #F0F0F0;
+        
+        }
+    }
+    .divider{
+        border-bottom: 1px solid #fff;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .followUs{
+        width: 100%;
+        //border: 1px solid black;
+        text-align: center;
+        button{
+            background-color: #F0F0F0;
+            padding: 10px;
+        }
+    }
+    .copyRights{
+        strong{
+            color: #fff;
+        }
+    }
+    @media screen and  (min-width:0px){
+        .ready{
+            width: 90%;
+        }
+       
+
+    }
+    @media screen and  (min-width:992px){
+        .ready{
+            width: 60%;
+        }
+       
+
+    }
+}
