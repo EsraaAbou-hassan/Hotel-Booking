@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    //border:1px solid #000;
+    
+
+    .picker {
+        width: 100%;
+    }
+    .dates,.btn {
+        color: #327885;
+        font-weight: bold;
+        border: solid 5px #327885; 
+        padding: 2px;
+        background-color: #fff;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;      
+    }
+    .country {
+        color: #327885;
+        font-weight: bold;
+        border: solid 5px #327885;
+        background-color: #fff;
+        width: 100%;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 10px;   
+    }
+    .btn{
+        width: 120px;
+    }
+    
+    @media screen and  (min-width:0px){
+        .picker{
+            width: 100%;
+            margin: auto;
+            //border: 1px solid black;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+       
+    }
+    @media screen and  (min-width:992px){
+
+    }
+}

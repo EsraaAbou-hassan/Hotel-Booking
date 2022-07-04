@@ -1,0 +1,19 @@
+.container{
+    margin-bottom: 400px;
+    .sideBar{
+        background-color: lightblue;
+        height: 500px;
+        margin-top: 20px;
+    }
+    .block{
+        border: 1px solid black;
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+    img{
+        width: 100%;
+        height: 180px;
+    }
+}

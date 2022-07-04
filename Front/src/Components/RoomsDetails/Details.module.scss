@@ -1,0 +1,35 @@
+.container{
+   .table{
+     border:1px solid #ccc;
+     padding: 10px;
+     background-image: url('../../Images/hero-bg.png');
+     box-shadow: 5px 5px 10px #ccc;
+   }
+   .head{
+     background-color:#327885; 
+     color:#fff;
+     height: 60px;
+   }
+   .head th{
+    padding: 10px;
+   }
+   .body td{
+    padding: 10px;
+    border-bottom: 1px solid rgb(228, 227, 227);
+
+   }
+   .btn{
+    width: 80px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #327885;
+    color: #327885;
+    border-radius: 5px;
+   }
+   .btn:hover{
+    background-color: #327885;
+    color: #fff;
+   }
+
+
+}
