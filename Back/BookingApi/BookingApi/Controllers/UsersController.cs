@@ -60,7 +60,9 @@ namespace BookingApi.Controllers
         
             // POST: api/Users
             [HttpPost("Add")]
-        public async Task<ActionResult<Room>> AddUser([FromForm]UploadImage UploadImage  ,RegisterUserDto newAcount)
+       // public async Task<ActionResult<Room>> AddUser(IFormFile UploadImage  ,RegisterUserDto newAcount)
+       public async Task<ActionResult<Room>> AddUser(RegisterUserDto newAcount)
+
         {
             User user = new User();
             user.FirstName=newAcount.FirstName;
@@ -69,34 +71,35 @@ namespace BookingApi.Controllers
             user.Email = newAcount.Email;
             user.city = newAcount.city;
             user.country = newAcount.country;
-            try
-            {
-                if (UploadImage.Image.Length> 0)
-                {
+            user.img = newAcount.img;
+            //try
+            //{
+            //    if (UploadImage.Length> 0)
+            //    {
 
-                    
 
-                    string[] arr = UploadImage.Image.FileName.Split('.');
-                    string fileName = user.Id.ToString() + "." + arr[arr.Length - 1];
 
-                    string path = _webHostEnvironment.WebRootPath + "\\Images\\Users\\";
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-                    using (FileStream fs = System.IO.File.Create(path + fileName))
-                    {
-                        UploadImage.Image.CopyTo(fs);
-                        fs.Flush();
-                    } ;
-                    user.img = fileName;
-                }
-            }
-            catch
-            {
-                throw;
-            }
-           
+            //        string[] arr = UploadImage.FileName.Split('.');
+            //        string fileName = user.Id.ToString() + "." + arr[arr.Length - 1];
+
+            //        string path = _webHostEnvironment.WebRootPath + "\\Images\\Users\\";
+            //        if (!Directory.Exists(path))
+            //        {
+            //            Directory.CreateDirectory(path);
+            //        }
+            //        using (FileStream fs = System.IO.File.Create(path + fileName))
+            //        {
+            //            UploadImage.CopyTo(fs);
+            //            fs.Flush();
+            //        } ;
+            //        user.img = fileName;
+            //    }
+            //}
+            //catch
+            //{
+            //    throw;
+            //}
+
 
 
 
@@ -135,7 +138,7 @@ namespace BookingApi.Controllers
             user.Email = olddata.Email != "string" ? olddata.Email : user.Email;
             user.city = olddata.city != "string" ? olddata.city : user.city;
             user.country=olddata.country != "string" ? olddata.country : user.country;
-            //user.img=olddata.img != "string" ? olddata.img: user.img;
+            user.img=olddata.img != "string" ? olddata.img: user.img;
             
 
             if (id != user.Id)

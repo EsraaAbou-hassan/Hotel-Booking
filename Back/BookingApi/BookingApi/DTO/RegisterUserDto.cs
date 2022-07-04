@@ -34,6 +34,6 @@ namespace BookingApi.DTO
 
        
 
-        public IFormFile  img { get; set; }
+        public string img { get; set; }
     }
 }
