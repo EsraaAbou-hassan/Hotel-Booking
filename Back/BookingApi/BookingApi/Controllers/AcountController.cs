@@ -40,7 +40,7 @@ namespace BookingApi.Controllers
             user.Email = newAcount.Email;
             user.city = newAcount.city;
             user.country = newAcount.country;
-            //user.img = newAcount.img;
+            user.img = newAcount.img;
 
 
 
