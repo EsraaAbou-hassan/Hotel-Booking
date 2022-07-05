@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import styles from './Details.module.scss';
+import {Link} from 'react-router-dom';
 
 function Details(){
     return(
@@ -32,7 +33,9 @@ function Details(){
                                         </select>
                                     </td>
                                     <td>
-                                        <button className={styles.btn}>Details</button>
+                                        <div className={styles.btn}>
+                                          <Link to='/reserve' className={styles.link}>Details</Link>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>

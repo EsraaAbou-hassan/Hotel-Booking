@@ -1,9 +1,14 @@
 import React, { Fragment } from "react";
 import styles from '../Register/Register.module.scss';
+import  style  from "./Payment.module.scss";
+import {Link} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 function Payment(){
+    const notify = () => toast.success("Book succeed");
     return(
         <Fragment>
             <div className={styles.container}>
@@ -31,13 +36,22 @@ function Payment(){
                                 <div className="input-group mb-4">
                                     <input type="text" className="form-control shadow-sm" placeholder="Card number"/>
                                 </div>
+                                <div className="input-group">
+                                   <p><strong>Card password:</strong></p>
+                                </div>
+                                <div className="input-group mb-4">
+                                    <input type="password" className="form-control shadow-sm" placeholder="Card number"/>
+                                </div>
                                 <div className="mb-5">
-                                     <button className="btn shadow-lg">Book</button>
+                                     <button className="btn shadow-lg" onClick={notify}>Book</button>
                                 </div>
                             </div>
                         </div>
                      </div>
                 </div>
+            </div>
+            <div className={style.notify}>
+                <ToastContainer position="bottom-left"/>
             </div>
         </Fragment>
     )

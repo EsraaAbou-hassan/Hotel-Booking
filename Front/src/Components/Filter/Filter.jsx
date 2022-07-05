@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-country-dropdown/dist/index.css'
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
+import {Link} from 'react-router-dom';
 
 function Filter() {
 
@@ -52,11 +53,12 @@ function Filter() {
                                 </select>
                             </div>
                             <div className="col-md-1 col-12">
-                                <button className={styles.btn}>Search</button>
-                            </div>
+                                <div className={styles.link}>
+                                   <Link to='/hotels' className={styles.btn}>Search</Link>
 
-                        </div>
-                        
+                                </div>
+                            </div>
+                        </div>   
                     </div>
                 </div>
             </div>

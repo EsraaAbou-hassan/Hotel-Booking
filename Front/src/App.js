@@ -9,6 +9,7 @@ import Reserve from "./Pages/Reserve";
 import LoginScreen from "./Pages/Login";
 import RegisterScreen from "./Pages/Register";
 import PaymentScreen from "./Pages/Payment";
+import Admin from "./Pages/Admin";
 
 
 
@@ -21,10 +22,11 @@ function App() {
         <Route path='/hotels' element={<Hotels/>}/>
         <Route path='/rooms' element={<Rooms/>}/>
         <Route path='/roomsdetails' element={<RoomsDetails/>}/>
-        <Route path='/0' element={<Reserve/>}/>
+        <Route path='/reserve' element={<Reserve/>}/>
         <Route path='/login'  element={<LoginScreen/>}/>
         <Route path='/register' element={<RegisterScreen/>}/>
         <Route path='/payment' element={<PaymentScreen/>}/>
+        <Route path='/admin' element={<Admin/>}/>
      </Routes>
    </Fragment>
   );

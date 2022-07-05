@@ -25,6 +25,16 @@
     border: 1px solid #327885;
     color: #327885;
     border-radius: 5px;
+    text-align: center;
+    line-height: 2.3;
+    .link{
+      text-decoration: none;
+      color: #327885;
+    }
+    .link:hover{
+      color: #fff;
+
+    }
    }
    .btn:hover{
     background-color: #327885;
