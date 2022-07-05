@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
+    "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
   },
   "projects": {
-    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
+    "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "projectUniqueName": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
         "projectName": "BookingApi",
-        "projectPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
-        "packagesPath": "C:\\Users\\esraa\\.nuget\\packages\\",
-        "outputPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\obj\\",
+        "projectPath": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "packagesPath": "C:\\Users\\Esraa-ElSebaey\\.nuget\\packages\\",
+        "outputPath": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\esraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Esraa-ElSebaey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
         }
       }
     }
