@@ -4,7 +4,7 @@ import img1 from '../../Images/17.webp';
 import img2 from '../../Images/18.jpg';
 import img3 from '../../Images/19.jpg';
 import img4 from '../../Images/48.jpg';
-
+import {Link} from 'react-router-dom';
 function ListRooms(){
     return(
         <Fragment>
@@ -56,7 +56,7 @@ function ListRooms(){
                             <h2>Description</h2>
                             <p>description for hotel like it's name, it's location</p>
                             <p>hotel service like air condition, breakfast, jym, etc...</p>
-                            <button className='btn btn-primary'>Availability</button>
+                            <Link to='/roomsdetails' className='btn btn-primary'>Availability</Link>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import styles from './ReserveDetails.module.scss';
+import {Link} from 'react-router-dom';
 
 
 function ReserveDetails(){
@@ -14,7 +15,7 @@ function ReserveDetails(){
                         <p><strong>Price:</strong> $150</p>
                         <p><strong>Amount:</strong> 2 Rooms</p>
                         <p><strong>Total:</strong> $300</p>
-                        <button className='btn btn-primary'>Reserve</button>
+                        <Link to='/payment' className='btn btn-primary'>Reserve</Link>
                     </div>
                 </div>
             </div>

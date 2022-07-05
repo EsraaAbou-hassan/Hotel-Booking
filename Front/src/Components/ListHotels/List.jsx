@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styles from './List.module.scss';
 import img from '../../Images/34.jpg';
 import Filter from '../Filter/Filter';
+import {Link} from 'react-router-dom';
 
 
 function List(){
@@ -28,7 +29,7 @@ function List(){
                             </div>
                             <div className='col-3 d-flex  flex-column justify-content-end align-items-end'>
                                 <p><strong>$150</strong></p>
-                                <button className='btn btn-primary'>availability</button>
+                                <Link to='/rooms' className='btn btn-primary'>availability</Link>
                             </div>
                         </div>
                     </div>
