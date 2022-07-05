@@ -6,18 +6,13 @@ namespace BookingApi.ViewModel
     {
         [Required]
         public string name { get; set; }
-        [Required]
-        public string type { get; set; }
+       
 
         [Required]
         public string city { get; set; }
         [Required]
-        public string address { get; set; }
-        [Required]
-        public string distance { get; set; }
-
-        [Required]
-        public string title { get; set; }
+        public string country { get; set; }
+       
         public string[] Images { get; set; }
 
 

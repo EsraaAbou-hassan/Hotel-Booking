@@ -33,8 +33,20 @@ namespace BookingApi.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NumberOfAdult")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfChildren")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfRooms")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
                     b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
@@ -46,6 +58,23 @@ namespace BookingApi.Migrations
                     b.HasIndex("UserId1");
 
                     b.ToTable("BookingRoomToUser");
+                });
+
+            modelBuilder.Entity("BookingApi.Models.Feature", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeatureId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FeatureId");
+
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("BookingApi.Models.HoteImages", b =>
@@ -78,10 +107,6 @@ namespace BookingApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelId"), 1L, 1);
 
-                    b.Property<string>("address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("cheapestPrice")
                         .HasColumnType("int");
 
@@ -89,11 +114,11 @@ namespace BookingApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("description")
+                    b.Property<string>("country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("distance")
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -107,17 +132,24 @@ namespace BookingApi.Migrations
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("HotelId");
 
                     b.ToTable("Hotels");
+                });
+
+            modelBuilder.Entity("BookingApi.Models.HotelFeatures", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FeatureId", "HotelId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelFeatures");
                 });
 
             modelBuilder.Entity("BookingApi.Models.Room", b =>
@@ -138,7 +170,7 @@ namespace BookingApi.Migrations
                     b.Property<int>("roomNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("title")
+                    b.Property<string>("type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -169,6 +201,21 @@ namespace BookingApi.Migrations
                     b.ToTable("RoomImages");
                 });
 
+            modelBuilder.Entity("BookingApi.Models.RoomService", b =>
+                {
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ServiceId", "RoomId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomServices");
+                });
+
             modelBuilder.Entity("BookingApi.Models.RoomsInHotel", b =>
                 {
                     b.Property<int>("HotelId")
@@ -185,6 +232,23 @@ namespace BookingApi.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("RoomsInHotel");
+                });
+
+            modelBuilder.Entity("BookingApi.Models.Service", b =>
+                {
+                    b.Property<int>("ServiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ServiceId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BookingApi.Models.User", b =>
@@ -258,6 +322,12 @@ namespace BookingApi.Migrations
                     b.Property<string>("img")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("visaNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("visapassword")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -433,6 +503,25 @@ namespace BookingApi.Migrations
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("BookingApi.Models.HotelFeatures", b =>
+                {
+                    b.HasOne("BookingApi.Models.Feature", "Feature")
+                        .WithMany("HotelFeatures")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookingApi.Models.Hotel", "Hotel")
+                        .WithMany("HotelFeatures")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+
+                    b.Navigation("Hotel");
+                });
+
             modelBuilder.Entity("BookingApi.Models.RoomImages", b =>
                 {
                     b.HasOne("BookingApi.Models.Room", "Room")
@@ -442,6 +531,25 @@ namespace BookingApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("BookingApi.Models.RoomService", b =>
+                {
+                    b.HasOne("BookingApi.Models.Room", "Room")
+                        .WithMany("RoomServices")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookingApi.Models.Service", "Service")
+                        .WithMany("RoomServices")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("BookingApi.Models.RoomsInHotel", b =>
@@ -514,14 +622,28 @@ namespace BookingApi.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("BookingApi.Models.Feature", b =>
+                {
+                    b.Navigation("HotelFeatures");
+                });
+
             modelBuilder.Entity("BookingApi.Models.Hotel", b =>
                 {
+                    b.Navigation("HotelFeatures");
+
                     b.Navigation("RoomsInHotel");
                 });
 
             modelBuilder.Entity("BookingApi.Models.Room", b =>
                 {
+                    b.Navigation("RoomServices");
+
                     b.Navigation("RoomsInHotel");
+                });
+
+            modelBuilder.Entity("BookingApi.Models.Service", b =>
+                {
+                    b.Navigation("RoomServices");
                 });
 #pragma warning restore 612, 618
         }
