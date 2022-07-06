@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+//using System.Web.HttpUtility.Cors;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors();
 
 builder.Services.AddDbContext<Bookingdb>(a => { a.UseSqlServer(builder.Configuration.GetConnectionString("con")); });
 
@@ -72,12 +74,16 @@ builder.Services.AddSwaggerGen(swagger =>
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(o=>o.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking v1"));
 }
+
+app.UseCors();
+
 app.UseHttpsRedirection();
 app.UseCors(s=>s.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 

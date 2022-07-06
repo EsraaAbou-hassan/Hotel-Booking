@@ -1,5 +1,6 @@
+//import { getByDisplayValue } from '@testing-library/react';
 import axios from 'axios';
-let URL='https://localhost:7298/api/Users';
+let URL='https://localhost:7298/api/Acount/Register';
 
 let USERCRUD={
     getAll:()=>{
