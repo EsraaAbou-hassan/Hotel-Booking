@@ -34,6 +34,6 @@ namespace BookingApi.DTO
 
        
 
-        public string img { get; set; }
+       
     }
 }

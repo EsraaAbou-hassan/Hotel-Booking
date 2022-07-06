@@ -16,10 +16,11 @@ namespace BookingApi.Controllers
     public class RoomsController : ControllerBase
     {
         private readonly Bookingdb _context;
-
-        public RoomsController(Bookingdb context)
+        private static IWebHostEnvironment _webHostEnvironment;
+        public RoomsController(Bookingdb context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/Rooms
@@ -58,7 +59,8 @@ namespace BookingApi.Controllers
         {
             Room room =  await _context.Rooms.FindAsync(id);
             List<RoomImages> oldImages = await _context.RoomImages.ToListAsync();
-            List<RoomsInHotel> oldroomsInHotels = await _context.RoomsInHotel.ToListAsync();   
+            List<RoomsInHotel> oldroomsInHotels = await _context.RoomsInHotel.ToListAsync(); 
+            List<RoomService> oldServices=await _context.RoomServices.Where(i=>i.RoomId==id).ToListAsync();
             if (id != room.RoomId)
             {
                 return BadRequest();
@@ -71,7 +73,14 @@ namespace BookingApi.Controllers
             room.maxPeople = nroom.maxPeople != 0 ? nroom.maxPeople : room.maxPeople ;
             _context.Entry(room).State = EntityState.Modified;
 
-            for (var i = 0; i < nroom.Images?.Length; i++)
+            string[] images = UpdateImge(nroom.ImagesFile);
+
+
+
+
+          
+
+            for (var i = 0; i < images?.Length; i++)
             {
 
                 if (_context.RoomImages.FirstOrDefault(r => r.RoomId ==room.RoomId) != null)
@@ -79,7 +88,7 @@ namespace BookingApi.Controllers
                     RoomImages roomImages = _context.RoomImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
                     roomImages.RoomId = room.RoomId;
 
-                    roomImages.Name = nroom.Images[i] != "string" ? nroom.Images[i] : oldImages[i].Name;
+                    roomImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
                     _context.Entry(roomImages).State = EntityState.Modified;
                 }
 
@@ -115,6 +124,31 @@ namespace BookingApi.Controllers
                 hotelrooms.Price = nroom.Price;
                 _context.RoomsInHotel.Add(hotelrooms);
             }
+            if (nroom.Services[0]!=0)
+            {
+                for (var ii = 0; ii < oldServices.Count; ii++)
+                {
+
+                    _context.RoomServices.Remove(oldServices[ii]);
+                    _context.SaveChanges();
+                }
+
+
+                for (var i = 0; i < nroom.Services?.Length; i++)
+                {
+                    RoomService roomService= new RoomService();
+                    roomService.RoomId = id;
+
+                    roomService.ServiceId= nroom.Services[i];
+
+                    _context.RoomServices.Add(roomService);
+
+                    _context.SaveChanges();
+
+                }
+
+
+            }
 
             try
             {
@@ -138,7 +172,7 @@ namespace BookingApi.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
+        public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
         {
             
             if (_context.Rooms == null)
@@ -162,17 +196,46 @@ namespace BookingApi.Controllers
                 roomsInHotel.Price = nroom.Price;
                 _context.RoomsInHotel.Add(roomsInHotel);
                 await _context.SaveChangesAsync();
-
+                string[] images = UpdateImge(nroom.ImagesFile);
                 RoomImages roomImages;
 
-                for (var i = 0; i < nroom.Images.Length; i++)
+                for (var i = 0; i < images.Length; i++)
                 {
                     roomImages = new RoomImages();
                     roomImages.RoomId=room.RoomId;
-                    roomImages.Name = nroom.Images[i];
+                    roomImages.Name = images[i];
                     _context.RoomImages.Add(roomImages);
                     await _context.SaveChangesAsync();
                 }
+                List<Service> services = _context.Services.ToList();
+
+
+                for (var ii = 0; ii < nroom.Services.Length; ii++)
+                {
+                    for (var i = 0; i < services.Count; i++)
+                    {
+
+
+                        if (services[i].ServiceId == nroom.Services[ii])
+                        {
+                            RoomService roomService = new RoomService();
+                            roomService.ServiceId=nroom.Services[ii];
+                            roomService.RoomId =room.RoomId;
+
+                            _context.RoomServices.Add(roomService);
+                            
+
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                    }
+
+
+                }
+                _context.SaveChangesAsync();
                 return (Ok("data added successfully"));
             }
            
@@ -211,18 +274,43 @@ namespace BookingApi.Controllers
                 _context.Rooms.Remove(room);
 
                 await _context.SaveChangesAsync();
-                return Ok("data deleted Successfully");
+               
             }
+            List<RoomsInHotel> roomsInHotels = _context.RoomsInHotel.ToList();
+            for (var h = 0; h < roomsInHotels.Count; h++)
+            {
+                RoomsInHotel roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId);
+                _context.RoomsInHotel.Remove(roomsInHotel);
 
-           
+            }
+            await _context.SaveChangesAsync();
+            return Ok("data deleted Successfully");
+
 
             return NoContent();
         }
-        private void UpdateImge()
+        private string[] UpdateImge(IFormFile[] ImageFiles)
         {
 
-        }
-        private bool RoomExists(int id)
+            string[] images = new string[ImageFiles.Length];
+            for (var i = 0; i < ImageFiles.Length; i++)
+            {
+                images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
+                    .Take(10).ToArray())
+                    .Replace(" ", "-");
+                images[i] += DateTime.Now.ToString("yymmssfff");
+                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Rooms", images[i]);
+                using (FileStream fs = new FileStream(imgPath, FileMode.Create))
+                {
+                    ImageFiles[i].CopyToAsync(fs);
+                }
+
+            }
+            return images;
+    
+
+}
+private bool RoomExists(int id)
         {
             return (_context.Rooms?.Any(e => e.RoomId == id)).GetValueOrDefault();
         }

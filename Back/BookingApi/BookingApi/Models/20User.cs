@@ -16,7 +16,7 @@ namespace BookingApi.Models
 
         public string city { get; set; }
 
-        public string img { get; set; }
+        
 
         public int visaNumber { get; set; }
         public int visapassword { get; set; }
