@@ -172,7 +172,8 @@ namespace BookingApi.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
+        //public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
+        public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
         {
             
             if (_context.Rooms == null)

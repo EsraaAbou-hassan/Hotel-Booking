@@ -47,11 +47,11 @@ function Register(){
                                         </span>
                                         <input type="text" 
                                         className="form-control shadow-sm"
-                                        placeholder="First Name" name="FName"
-                                        {...register("FName",{required:"First Name is required"})}
+                                        placeholder="First Name" name="FirstName"
+                                        {...register("FirstName",{required:"First Name is required"})}
                                         />
                                     </div>
-                                    <p>{errors.FName?.type==='required'&&
+                                    <p>{errors.FirstName?.type==='required'&&
                                      <div className={styles.validate}>
                                         <span>First Name is required</span>
                                      </div>}
@@ -62,11 +62,11 @@ function Register(){
                                         </span>
                                         <input type="text" 
                                         className="form-control shadow-sm" 
-                                        placeholder="Last Name" name="LName"
-                                        {...register("LName",{required:"Last Name is required"})}
+                                        placeholder="Last Name" name="LastName"
+                                        {...register("LastName",{required:"Last Name is required"})}
                                         />
                                     </div>
-                                    <p>{errors.LName?.type==='required'&& 
+                                    <p>{errors.LastName?.type==='required'&& 
                                        <div className={styles.validate}>
                                         <span>Last Name is required</span>
                                        </div>}
@@ -118,11 +118,11 @@ function Register(){
                                         </span>
                                         <input type="text" 
                                         className="form-control shadow-sm" 
-                                        placeholder="Country" name="Country"
-                                        {...register("Country",{required:"Country is required"})}
+                                        placeholder="Country" name="country"
+                                        {...register("country",{required:"Country is required"})}
                                         />
                                     </div>
-                                    <p>{errors.Country?.type==='required'&& 
+                                    <p>{errors.country?.type==='required'&& 
                                        <div className={styles.validate}>
                                         <span>Country is required</span>
                                        </div>}
@@ -133,11 +133,11 @@ function Register(){
                                         </span>
                                         <input type="text" 
                                         className="form-control shadow-sm" 
-                                        placeholder="City" name="City"
-                                        {...register("City",{required:"City is required"})}
+                                        placeholder="City" name="city"
+                                        {...register("city",{required:"City is required"})}
                                         />
                                     </div>
-                                    <p>{errors.City?.type==='required'&& 
+                                    <p>{errors.city?.type==='required'&& 
                                       <div className={styles.validate}>
                                         <span>City is required</span>
                                       </div>}
@@ -173,19 +173,19 @@ function Register(){
                                         </span>
                                         <input type="password" 
                                         className="form-control shadow-sm" 
-                                        placeholder="Confirm Password" name="ConfirmPass"
-                                        {...register("ConfirmPass",{required:"ConfirmPass is required",
+                                        placeholder="Confirm Password" name="ConfirmPassword"
+                                        {...register("ConfirmPassword",{required:"ConfirmPass is required",
                                         validate: (value) => value === Password || "Confirm password does not match"}
                                         
                                         )}
                                         />
                                     </div>
-                                    <p>{errors.ConfirmPass?.type==='required'&& 
+                                    <p>{errors.ConfirmPassword?.type==='required'&& 
                                        <div className={styles.validate}>
                                          <span>Confirm Password is required</span>
                                         </div>}
                                     </p>
-                                    <p>{errors.ConfirmPass?.type==='validate'&& 
+                                    <p>{errors.ConfirmPassword?.type==='validate'&& 
                                        <div className={styles.validate}>
                                          <span>Confirm password does not match</span>
                                         </div>}
