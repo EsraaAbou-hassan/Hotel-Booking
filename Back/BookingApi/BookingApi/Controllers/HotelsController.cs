@@ -18,11 +18,12 @@ namespace BookingApi.Controllers
     public class HotelsController : ControllerBase
     {
         private readonly Bookingdb _context;
-      
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HotelsController(Bookingdb context)
+        public HotelsController(Bookingdb context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/Hotels
@@ -57,10 +58,11 @@ namespace BookingApi.Controllers
         // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> PutHotel(int id, HotelViewModel hotel)
+        public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
         {
             Hotel oldhotel= await _context.Hotels.FindAsync(id);
             List<HoteImages> oldImages = await _context.HoteImages.ToListAsync();
+            List<HotelFeatures> oldFeature= await _context.HotelFeatures.Where(e=>e.HotelId==id).ToListAsync();
             if (id != oldhotel.HotelId)
             {
                 return BadRequest();
@@ -71,12 +73,16 @@ namespace BookingApi.Controllers
             oldhotel.country= hotel.country != "string" ? hotel.country : oldhotel.country;
 
             oldhotel.description = hotel.description != "string" ? hotel.description : oldhotel.description;
-            oldhotel.featured = hotel.featured != true ? hotel.featured : oldhotel.featured;
             oldhotel.cheapestPrice = hotel.cheapestPrice != 0 ? hotel.cheapestPrice: oldhotel.cheapestPrice;
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
         
             _context.Entry(oldhotel).State = EntityState.Modified;
-            for (var i = 0; i < hotel.Images?.Length; i++)
+            string[] images = UpdateImge(hotel.ImagesFile);
+
+
+
+           
+            for (var i = 0; i <images?.Length; i++)
             {
 
                 if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
@@ -84,12 +90,37 @@ namespace BookingApi.Controllers
                     HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
 
 
-                    HotelImages.Name = hotel.Images[i] != "string" ? hotel.Images[i] : oldImages[i].Name;
+                    HotelImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
                     _context.Entry(HotelImages).State = EntityState.Modified;
                 }
 
                 
             }
+            if (hotel.Features[0] !=0) {
+                for (var ii = 0; ii < oldFeature.Count; ii++)
+                {
+
+                    _context.HotelFeatures.Remove(oldFeature[ii]);
+                    _context.SaveChanges();
+                }
+
+
+                for (var i = 0; i < hotel.Features?.Length; i++)
+                {
+                    HotelFeatures hotelFeatures = new HotelFeatures();
+                    hotelFeatures.HotelId = id;
+
+                    hotelFeatures.FeatureId = hotel.Features[i];
+
+                    _context.HotelFeatures.Add(hotelFeatures);
+
+                    _context.SaveChanges();
+
+                }
+
+
+            }
+                        
 
             try
             {
@@ -114,7 +145,7 @@ namespace BookingApi.Controllers
         // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
+        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
         {
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
@@ -124,9 +155,10 @@ namespace BookingApi.Controllers
             newhotel.country = hotel.country;
 
             newhotel.description=hotel.description;
-            newhotel.featured= hotel.featured;
             newhotel.cheapestPrice= hotel.cheapestPrice;
             newhotel.rating= hotel.rating;
+
+          
 
             
 
@@ -138,17 +170,50 @@ namespace BookingApi.Controllers
           }
             _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
-            for (var i=0;i< hotel.Images.Length;i++)
+            string[] images = UpdateImge(hotel.ImagesFile);
+           
+
+            
+            for (var i=0;i<images.Length;i++)
             {
                 HotelImages = new HoteImages();
                 HotelImages.HotelId = newhotel.HotelId;
-                HotelImages.Name = hotel.Images[i];
+                HotelImages.Name = images[i];
                 _context.HoteImages.Add(HotelImages);
                 await _context.SaveChangesAsync();
-                return Ok("Data Added Successfully");
+               
+            }
+            List<Feature> feature = _context.Features.ToList();
+   
+
+                for (var ii = 0; ii < hotel.Features.Length; ii++)
+                {
+                        for (var i = 0; i < feature.Count; i++)
+                        {
+                            
+
+                            if (feature[i].FeatureId == hotel.Features[ii])
+                                {
+                                HotelFeatures hotelFeatures = new HotelFeatures();
+                                hotelFeatures.HotelId = newhotel.HotelId;
+                                hotelFeatures.FeatureId = feature[i].FeatureId;
+                                 
+                                _context.HotelFeatures.Add(hotelFeatures);
+                                _context.SaveChangesAsync();
+
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                        }
+                
+                    
             }
 
-            return CreatedAtAction("GetHotel", new { id = newhotel.HotelId }, hotel);
+
+            return Ok("Data Added Successfully");
         }
 
         // DELETE: api/Hotels/5
@@ -175,6 +240,13 @@ namespace BookingApi.Controllers
                     _context.HoteImages.Remove(r);
 
                 }
+                List<HotelFeatures> hotelFeatures = _context.HotelFeatures.ToList();
+                for (var i = 0; i < hotelFeatures.Count; i++)
+                {
+                    HotelFeatures r = _context.HotelFeatures.FirstOrDefault(d => d.HotelId == id);
+                    _context.HotelFeatures.Remove(r);
+
+                }
 
 
 
@@ -195,7 +267,27 @@ namespace BookingApi.Controllers
 
             
         }
+        private string[] UpdateImge(IFormFile[] ImageFiles)
+        {
 
+            string[] images = new string[ImageFiles.Length];
+            for (var i = 0; i < ImageFiles.Length; i++)
+            {
+                images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
+                    .Take(10).ToArray())
+                    .Replace(" ", "-");
+                images[i] += DateTime.Now.ToString("yymmssfff");
+                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Rooms", images[i]);
+                using (FileStream fs = new FileStream(imgPath, FileMode.Create))
+                {
+                    ImageFiles[i].CopyToAsync(fs);
+                }
+
+            }
+            return images;
+
+
+        }
         private bool HotelExists(int id)
         {
             return (_context.Hotels?.Any(e => e.HotelId == id)).GetValueOrDefault();

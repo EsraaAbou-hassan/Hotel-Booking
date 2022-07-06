@@ -24,7 +24,6 @@ namespace BookingApi.Models
         public int rating { get; set; }
         [Required]
         public int cheapestPrice { get; set; }//to know the cheapest room 
-        public bool featured { get; set; }=false;
 
         public IList<RoomsInHotel> RoomsInHotel { get; set; }
         public IList<HotelFeatures> HotelFeatures { get; set; }

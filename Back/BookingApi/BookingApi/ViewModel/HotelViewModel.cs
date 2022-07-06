@@ -14,7 +14,8 @@ namespace BookingApi.ViewModel
         public string country { get; set; }
        
         public string[] Images { get; set; }
-
+        public IFormFile[] ImagesFile { get; set; }
+        public int[] Features { get; set; }
 
         [Required]
         public string description { get; set; }
@@ -22,6 +23,5 @@ namespace BookingApi.ViewModel
         public int rating { get; set; }
         [Required]
         public int cheapestPrice { get; set; }//to know the cheapest room 
-        public bool featured { get; set; } = false;
     }
 }
