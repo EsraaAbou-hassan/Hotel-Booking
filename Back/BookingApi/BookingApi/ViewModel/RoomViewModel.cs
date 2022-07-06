@@ -5,7 +5,7 @@ namespace BookingApi.ViewModel
     public class RoomViewModel
     {
         [Required]
-        public string title { get; set; }
+        public string type { get; set; }
         [Required]
 
        

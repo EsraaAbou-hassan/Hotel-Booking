@@ -21,7 +21,6 @@ E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\staticwebassets.dev
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\scopedcss\bundle\BookingApi.styles.css
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.csproj.CopyComplete
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.dll
-E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\refint\BookingApi.dll
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.pdb
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.genruntimeconfig.cache
 E:\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\ref\BookingApi.dll
@@ -810,3 +809,4 @@ G:\ZMaterials\ZImportantMAT\React\Project-Graduation\Final Project\Back\BookingA
 G:\ZMaterials\ZImportantMAT\React\Project-Graduation\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\ref\BookingApi.dll
 G:\ZMaterials\ZImportantMAT\React\Project-Graduation\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.pdb
 G:\ZMaterials\ZImportantMAT\React\Project-Graduation\Final Project\Back\BookingApi\BookingApi\obj\Debug\net6.0\BookingApi.genruntimeconfig.cache
+E:\Final Project\Back\BookingApi\BookingApi\bin\Debug\net6.0\ref\BookingApi.dll

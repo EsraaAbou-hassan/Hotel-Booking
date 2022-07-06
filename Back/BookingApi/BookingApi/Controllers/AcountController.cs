@@ -25,10 +25,6 @@ namespace BookingApi.Controllers
             _configuration = configuration;
            
         }
-
-
-
-
         [HttpPost("Register")]
         public async Task<ActionResult> Registeration(RegisterUserDto newAcount)
 

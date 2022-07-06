@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
-using System.Web.HttpUtility.Cors;
+//using System.Web.HttpUtility.Cors;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -22,6 +24,7 @@ builder.Services.AddDbContext<Bookingdb>(a => { a.UseSqlServer(builder.Configura
 builder.Services.AddIdentity<User, IdentityRole>()
 .AddEntityFrameworkStores<Bookingdb>();
 
+builder.Services.AddCors();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -78,8 +81,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(o=>o.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking v1"));
 }
+
 app.UseCors();
+
 app.UseHttpsRedirection();
+app.UseCors(s=>s.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
 app.UseAuthentication();
 app.UseAuthorization();
 

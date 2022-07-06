@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
+    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
   },
   "projects": {
-    "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
+    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "projectUniqueName": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
         "projectName": "BookingApi",
-        "projectPath": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "projectPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
         "packagesPath": "C:\\Users\\Esraa-ElSebaey\\.nuget\\packages\\",
-        "outputPath": "G:\\ZMaterials\\ZImportantMAT\\React\\Project-Graduation\\Final Project\\Back\\BookingApi\\BookingApi\\obj\\",
+        "outputPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

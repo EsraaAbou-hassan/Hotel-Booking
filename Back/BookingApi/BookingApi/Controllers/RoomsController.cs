@@ -64,7 +64,7 @@ namespace BookingApi.Controllers
                 return BadRequest();
             }
             
-            room.title = nroom.title != "string" ? nroom.title : room.title;
+            room.type = nroom.type != "string" ? nroom.type : room.type;
             room.description = nroom.description != "string" ? nroom.description : room.description;
             room.roomNumber = nroom.roomNumber != 0 ? nroom.roomNumber : room.roomNumber;
 
@@ -148,7 +148,7 @@ namespace BookingApi.Controllers
             else
             {
                 Room room = new Room();
-                room.title = nroom.title;
+                room.type = nroom.type;
                 room.description = nroom.description;
                 room.roomNumber = nroom.roomNumber;
 

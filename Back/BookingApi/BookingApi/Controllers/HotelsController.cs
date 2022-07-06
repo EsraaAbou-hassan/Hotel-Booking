@@ -66,17 +66,14 @@ namespace BookingApi.Controllers
                 return BadRequest();
             }
             oldhotel.name = hotel.name!="string"?hotel.name:oldhotel.name;
-            oldhotel.type = hotel.type != "string" ? hotel.type : oldhotel.type;
             oldhotel.city = hotel.city != "string" ? hotel.city : oldhotel.city;
 
-            oldhotel.address = hotel.address != "string" ? hotel.address : oldhotel.address;
-            oldhotel.distance = hotel.distance != "string" ? hotel.distance : oldhotel.distance;
+            oldhotel.country= hotel.country != "string" ? hotel.country : oldhotel.country;
 
             oldhotel.description = hotel.description != "string" ? hotel.description : oldhotel.description;
             oldhotel.featured = hotel.featured != true ? hotel.featured : oldhotel.featured;
             oldhotel.cheapestPrice = hotel.cheapestPrice != 0 ? hotel.cheapestPrice: oldhotel.cheapestPrice;
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
-            oldhotel.title = hotel.title != "string" ? hotel.title : oldhotel.title;
         
             _context.Entry(oldhotel).State = EntityState.Modified;
             for (var i = 0; i < hotel.Images?.Length; i++)
@@ -122,17 +119,14 @@ namespace BookingApi.Controllers
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
             newhotel.name = hotel.name;
-            newhotel.type = hotel.type;
             newhotel.city = hotel.city;
 
-            newhotel.address = hotel.address;
-            newhotel.distance = hotel.distance;
+            newhotel.country = hotel.country;
 
             newhotel.description=hotel.description;
             newhotel.featured= hotel.featured;
             newhotel.cheapestPrice= hotel.cheapestPrice;
             newhotel.rating= hotel.rating;
-            newhotel.title= hotel.title;
 
             
 

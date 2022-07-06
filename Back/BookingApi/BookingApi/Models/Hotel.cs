@@ -8,18 +8,15 @@ namespace BookingApi.Models
         public int HotelId{ get; set; }
         [Required]
         public string name { get; set; }
-        [Required]
-        public string type { get; set; }
+       
 
         [Required]
         public string city { get; set; }
         [Required]
-        public string address { get; set; }
-        [Required]
-        public string distance { get; set; }
+        public string country { get; set; }
+        
 
-        [Required]
-        public string title { get; set; }
+       
 
         [Required]
         public string description { get; set; }
@@ -30,6 +27,7 @@ namespace BookingApi.Models
         public bool featured { get; set; }=false;
 
         public IList<RoomsInHotel> RoomsInHotel { get; set; }
+        public IList<HotelFeatures> HotelFeatures { get; set; }
 
 
 

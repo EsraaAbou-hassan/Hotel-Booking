@@ -8,7 +8,7 @@ namespace BookingApi.Models
         public int RoomId { get; set; }
 
         [Required]
-        public string title { get; set; }
+        public string type { get; set; }
        
 
         [Required]
@@ -19,6 +19,7 @@ namespace BookingApi.Models
         public int roomNumber { get; set; }
 
         public IList<RoomsInHotel> RoomsInHotel { get; set; }
+        public IList<RoomService> RoomServices { get; set; }
 
     }
 }
