@@ -58,7 +58,9 @@ namespace BookingApi.Controllers
         // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
+        // public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
+
+        public async Task<IActionResult> PutHotel(int id,HotelViewModel hotel)
         {
             Hotel oldhotel= await _context.Hotels.FindAsync(id);
             List<HoteImages> oldImages = await _context.HoteImages.ToListAsync();
@@ -145,7 +147,9 @@ namespace BookingApi.Controllers
         // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
+        //        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
+
+        public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
         {
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
@@ -277,7 +281,7 @@ namespace BookingApi.Controllers
                     .Take(10).ToArray())
                     .Replace(" ", "-");
                 images[i] += DateTime.Now.ToString("yymmssfff");
-                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Rooms", images[i]);
+                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Hotels", images[i]);
                 using (FileStream fs = new FileStream(imgPath, FileMode.Create))
                 {
                     ImageFiles[i].CopyToAsync(fs);

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import Register from '../Components/Register/Register';
 
-function RegisterScreen(){
+function RegisterScreen({setUpData}){
 
     return(
         <Fragment>
-            <Register/>
+            <Register setUpData={setUpData}/>
 
         </Fragment>
     )

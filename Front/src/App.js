@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Home from './Pages/Home';
@@ -15,16 +15,20 @@ import Admin from "./Pages/Admin";
 
 
 function App() {
+ let [status,setStatus]=useState(false);
+ let [logData,setLogData]=useState();
+ let [upData,setUpData]=useState();
+ 
   return (
    <Fragment>
      <Routes>
-        <Route path='/' exact element={<Home/>}/>
+        <Route path='/' exact element={<LoginScreen setStatus={setStatus} setLogData={setLogData}/>}/>
+        <Route path='/home' exact element={<Home setStatus={setStatus} myStatus={status}  logData={logData} upData={upData}/>}/>
         <Route path='/hotels' element={<Hotels/>}/>
         <Route path='/rooms' element={<Rooms/>}/>
         <Route path='/roomsdetails' element={<RoomsDetails/>}/>
         <Route path='/reserve' element={<Reserve/>}/>
-        <Route path='/login'  element={<LoginScreen/>}/>
-        <Route path='/register' element={<RegisterScreen/>}/>
+        <Route path='/register' element={<RegisterScreen setUpData={setUpData}/>}/>
         <Route path='/payment' element={<PaymentScreen/>}/>
         <Route path='/admin' element={<Admin/>}/>
      </Routes>
