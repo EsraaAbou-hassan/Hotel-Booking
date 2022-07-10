@@ -4,19 +4,39 @@
     margin-bottom: 30px;
     //border:1px solid #000;
     
+  span{
+    display: inline-block;
+    color: grey;
+  }
+  i{
+    color:#327885;
+  }
 
-    .picker {
+
+    
+.picker {
         width: 100%;
     }
+    
     .dates,.btn {
         color: #327885;
         font-weight: bold;
-        border: solid 5px #327885; 
+        // border: solid 5px #327885; 
         padding: 2px;
         background-color: #fff;
         width: 100%;
         padding: 10px;
-        margin-bottom: 10px;      
+        // margin-bottom: 10px;      
+    }
+    .dates{
+        border: none;
+        margin-left: 15px;
+        color: grey;
+        font-weight: 600;
+        cursor: pointer;
+        padding:0px;
+
+        
     }
     .country {
         color: #327885;
@@ -31,11 +51,17 @@
     .btn{
         width: 120px;
         text-decoration: none;
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 10px 40px;
+        background-color: #327885;
+        color: white;
         
     }
     .link{
         margin-top:15px;
         text-decoration:none;
+        width:auto;
         
     }
     
@@ -55,4 +81,7 @@
     @media screen and  (min-width:992px){
 
     }
+
+   
 }
+

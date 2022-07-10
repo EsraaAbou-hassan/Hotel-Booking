@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
+    "D:\\graduationProject\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {}
   },
   "projects": {
-    "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
+    "D:\\graduationProject\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "projectUniqueName": "D:\\graduationProject\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
         "projectName": "BookingApi",
-        "projectPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
-        "packagesPath": "C:\\Users\\Esraa-ElSebaey\\.nuget\\packages\\",
-        "outputPath": "E:\\Final Project\\Back\\BookingApi\\BookingApi\\obj\\",
+        "projectPath": "D:\\graduationProject\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\graduationProject\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Esraa-ElSebaey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     }
