@@ -24,8 +24,8 @@ namespace BookingApi.Migrations
 
             modelBuilder.Entity("BookingApi.Models.BookingRoomToUser", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
@@ -48,14 +48,9 @@ namespace BookingApi.Migrations
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("UserId", "RoomId");
 
                     b.HasIndex("RoomId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("BookingRoomToUser");
                 });
@@ -478,7 +473,9 @@ namespace BookingApi.Migrations
 
                     b.HasOne("BookingApi.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Room");
 

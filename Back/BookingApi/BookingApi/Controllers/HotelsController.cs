@@ -79,25 +79,25 @@ namespace BookingApi.Controllers
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
         
             _context.Entry(oldhotel).State = EntityState.Modified;
-            string[] images = UpdateImge(hotel.ImagesFile);
+            //string[] images = UpdateImge(hotel.ImagesFile);
 
 
 
            
-            for (var i = 0; i <images?.Length; i++)
-            {
+            //for (var i = 0; i <images?.Length; i++)
+            //{
 
-                if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
-                {
-                    HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+            //    if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+            //    {
+            //        HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
 
 
-                    HotelImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
-                    _context.Entry(HotelImages).State = EntityState.Modified;
-                }
+            //        HotelImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
+            //        _context.Entry(HotelImages).State = EntityState.Modified;
+            //    }
 
                 
-            }
+            //}
             if (hotel.Features[0] !=0) {
                 for (var ii = 0; ii < oldFeature.Count; ii++)
                 {
@@ -174,19 +174,19 @@ namespace BookingApi.Controllers
           }
             _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
-            string[] images = UpdateImge(hotel.ImagesFile);
+            //string[] images = UpdateImge(hotel.ImagesFile);
            
 
             
-            for (var i=0;i<images.Length;i++)
-            {
-                HotelImages = new HoteImages();
-                HotelImages.HotelId = newhotel.HotelId;
-                HotelImages.Name = images[i];
-                _context.HoteImages.Add(HotelImages);
-                await _context.SaveChangesAsync();
+            //for (var i=0;i<images.Length;i++)
+            //{
+            //    HotelImages = new HoteImages();
+            //    HotelImages.HotelId = newhotel.HotelId;
+            //    HotelImages.Name = images[i];
+            //    _context.HoteImages.Add(HotelImages);
+            //    await _context.SaveChangesAsync();
                
-            }
+            //}
             List<Feature> feature = _context.Features.ToList();
    
 
