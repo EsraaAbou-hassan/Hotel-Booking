@@ -8,6 +8,7 @@ function AddHotel(){
         mode: "onTouched"
     });
     const onSubmit=async(data)=>{   
+        console.log(data);
         reset();    
     }
   return(
