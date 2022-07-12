@@ -35,6 +35,7 @@ namespace BookingApi.Controllers
               return NotFound();
           }
             return await _context.Hotels.ToListAsync();
+
         }
 
         // GET: api/Hotels/5
@@ -58,9 +59,9 @@ namespace BookingApi.Controllers
         // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("Update/{id}")]
-        // public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
+        public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
 
-        public async Task<IActionResult> PutHotel(int id,HotelViewModel hotel)
+        //public async Task<IActionResult> PutHotel(int id,HotelViewModel hotel)
         {
             Hotel oldhotel= await _context.Hotels.FindAsync(id);
             List<HoteImages> oldImages = await _context.HoteImages.ToListAsync();
@@ -79,25 +80,25 @@ namespace BookingApi.Controllers
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
         
             _context.Entry(oldhotel).State = EntityState.Modified;
-            //string[] images = UpdateImge(hotel.ImagesFile);
+            string[] images = UpdateImge(hotel.ImagesFile);
 
 
 
-           
-            //for (var i = 0; i <images?.Length; i++)
-            //{
 
-            //    if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
-            //    {
-            //        HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+            for (var i = 0; i < images?.Length; i++)
+            {
+
+                if (_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+                {
+                    HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
 
 
-            //        HotelImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
-            //        _context.Entry(HotelImages).State = EntityState.Modified;
-            //    }
+                    HotelImages.Name = images[i] != null ? images[i] : oldImages[i].Name;
+                    _context.Entry(HotelImages).State = EntityState.Modified;
+                }
 
-                
-            //}
+
+            }
             if (hotel.Features[0] !=0) {
                 for (var ii = 0; ii < oldFeature.Count; ii++)
                 {

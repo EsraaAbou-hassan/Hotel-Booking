@@ -55,7 +55,9 @@ namespace BookingApi.Controllers
         // PUT: api/Rooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> UpdateRoom(int id, RoomViewModel nroom)
+        public async Task<IActionResult> UpdateRoom(int id, [FromForm] RoomViewModel nroom)
+
+        // public async Task<IActionResult> UpdateRoom(int id, RoomViewModel nroom)
         {
             Room room =  await _context.Rooms.FindAsync(id);
             List<RoomImages> oldImages = await _context.RoomImages.ToListAsync();
@@ -73,27 +75,27 @@ namespace BookingApi.Controllers
             room.maxPeople = nroom.maxPeople != 0 ? nroom.maxPeople : room.maxPeople ;
             _context.Entry(room).State = EntityState.Modified;
 
-            //string[] images = UpdateImge(nroom.ImagesFile);
+            string[] images = UpdateImge(nroom.ImagesFile);
 
 
 
 
-          
-
-            //for (var i = 0; i < images?.Length; i++)
-            //{
-
-            //    if (_context.RoomImages.FirstOrDefault(r => r.RoomId ==room.RoomId) != null)
-            //    {
-            //        RoomImages roomImages = _context.RoomImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
-            //        roomImages.RoomId = room.RoomId;
-
-            //        roomImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
-            //        _context.Entry(roomImages).State = EntityState.Modified;
-            //    }
 
 
-            //}
+            for (var i = 0; i < images?.Length; i++)
+            {
+
+                if (_context.RoomImages.FirstOrDefault(r => r.RoomId == room.RoomId) != null)
+                {
+                    RoomImages roomImages = _context.RoomImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+                    roomImages.RoomId = room.RoomId;
+
+                    roomImages.Name = images[i] != null ? images[i] : oldImages[i].Name;
+                    _context.Entry(roomImages).State = EntityState.Modified;
+                }
+
+
+            }
             if (oldroomsInHotels.Count > 0) { 
                     for (var i = 0; i < oldroomsInHotels?.Count; i++)
                 {
@@ -172,8 +174,8 @@ namespace BookingApi.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        //public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
-        public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
+        public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
+       // public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
         {
             
             if (_context.Rooms == null)
@@ -197,17 +199,17 @@ namespace BookingApi.Controllers
                 roomsInHotel.Price = nroom.Price;
                 _context.RoomsInHotel.Add(roomsInHotel);
                 await _context.SaveChangesAsync();
-                //string[] images = UpdateImge(nroom.ImagesFile);
-                //RoomImages roomImages;
+                string[] images = UpdateImge(nroom.ImagesFile);
+                RoomImages roomImages;
 
-                //for (var i = 0; i < images.Length; i++)
-                //{
-                //    roomImages = new RoomImages();
-                //    roomImages.RoomId=room.RoomId;
-                //    roomImages.Name = images[i];
-                //    _context.RoomImages.Add(roomImages);
-                //    await _context.SaveChangesAsync();
-                //}
+                for (var i = 0; i < images.Length; i++)
+                {
+                    roomImages = new RoomImages();
+                    roomImages.RoomId = room.RoomId;
+                    roomImages.Name = images[i];
+                    _context.RoomImages.Add(roomImages);
+                    await _context.SaveChangesAsync();
+                }
                 List<Service> services = _context.Services.ToList();
 
 

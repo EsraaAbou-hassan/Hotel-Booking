@@ -22,7 +22,17 @@ namespace BookingApi.Controllers
         {
             _context = context;
         }
+        [HttpPost("ChooseRoomAndHotel")]
 
+
+        public async Task<ActionResult<IEnumerable<Hotel>>> Filter(HotelFilterViewModeles filterViewModeles)
+        {
+            if (filterViewModeles.city== null)
+            {
+                return NotFound();
+            }
+            return await _context.Hotels.Where(l=>l.city==filterViewModeles.city).Include(w=>w.RoomsInHotel).ToListAsync();
+        }
         // GET: api/BookingRoomToUsers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookingRoomToUser>>> GetBookingRoomToUser()
