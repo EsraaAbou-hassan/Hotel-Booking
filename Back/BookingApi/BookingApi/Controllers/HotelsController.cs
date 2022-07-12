@@ -278,11 +278,13 @@ namespace BookingApi.Controllers
             string[] images = new string[ImageFiles.Length];
             for (var i = 0; i < ImageFiles.Length; i++)
             {
+
                 images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
                     .Take(10).ToArray())
                     .Replace(" ", "-");
-                images[i] += DateTime.Now.ToString("yymmssfff");
-                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Hotels", images[i]);
+
+                images[i] += DateTime.Now.ToString("yymmssfff")+".jpg";
+                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Hotels", images[i]);
                 using (FileStream fs = new FileStream(imgPath, FileMode.Create))
                 {
                     ImageFiles[i].CopyToAsync(fs);

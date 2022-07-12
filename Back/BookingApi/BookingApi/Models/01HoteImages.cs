@@ -6,6 +6,7 @@ namespace BookingApi.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
         [ForeignKey("Hotel")]
         public int HotelId { get; set; }
         public virtual Hotel Hotel { get; set; }
