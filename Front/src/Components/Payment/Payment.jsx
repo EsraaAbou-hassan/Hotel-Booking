@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styles from '../Register/Register.module.scss';
+import styles from '../Register/Form.module.scss';
 import  style  from "./Payment.module.scss";
 import {Link} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';

@@ -40,7 +40,7 @@ function Login({setStatus,setLogData}){
                 if(data){
                     setStatus(true);
                     setLogData(data.UserName);
-                    //localStorage.setItem("userLogin",JSON.stringify(data))
+                    localStorage.setItem("userLogin",JSON.stringify(data))
                     navigate('/home');
                 }      
             })

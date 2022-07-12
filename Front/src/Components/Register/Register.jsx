@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styles from './Register.module.scss';
+import styles from './Form.module.scss';
 import {useForm} from 'react-hook-form';
 import USERACCOUNT from '../../model/Account';
 import { useState } from "react";
@@ -23,7 +23,7 @@ function Register({setUpData}){
         if(data){
             //setSuccess(true);
             setUpData(data.UserName);
-            navigate('/home');
+            navigate('/');
 
         }
         console.log(data);
