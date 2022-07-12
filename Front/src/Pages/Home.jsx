@@ -6,10 +6,10 @@ import Footer from '../Components/Footer/Footer';
 import Filter from '../Components/Filter/Filter';
 
 
-function Home(){
+function Home({setStatus,myStatus,logData,upData}){
   return(
     <Fragment>
-      <Header/>
+      <Header setStatus={setStatus} myStatus={myStatus} logData={logData} upData={upData}/>
       <Filter/>
       <Places/>
       <Gallery/>

@@ -148,9 +148,9 @@ namespace BookingApi.Controllers
         // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        //        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
+        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
 
-        public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
+        //public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
         {
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
@@ -175,19 +175,19 @@ namespace BookingApi.Controllers
           }
             _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
-            //string[] images = UpdateImge(hotel.ImagesFile);
-           
+            string[] images = UpdateImge(hotel.ImagesFile);
 
-            
-            //for (var i=0;i<images.Length;i++)
-            //{
-            //    HotelImages = new HoteImages();
-            //    HotelImages.HotelId = newhotel.HotelId;
-            //    HotelImages.Name = images[i];
-            //    _context.HoteImages.Add(HotelImages);
-            //    await _context.SaveChangesAsync();
-               
-            //}
+
+
+            for (var i = 0; i < images.Length; i++)
+            {
+                HotelImages = new HoteImages();
+                HotelImages.HotelId = newhotel.HotelId;
+                HotelImages.Name = images[i];
+                _context.HoteImages.Add(HotelImages);
+                await _context.SaveChangesAsync();
+
+            }
             List<Feature> feature = _context.Features.ToList();
    
 

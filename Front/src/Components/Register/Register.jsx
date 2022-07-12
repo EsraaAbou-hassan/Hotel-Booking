@@ -1,26 +1,36 @@
 import React, { Fragment } from "react";
-import styles from './Register.module.scss';
+import styles from './Form.module.scss';
 import {useForm} from 'react-hook-form';
 import USERACCOUNT from '../../model/Account';
 import { useState } from "react";
 import { useEffect } from "react";
+import {Link,useNavigate} from 'react-router-dom';
 
 
-function Register(){
+
+function Register({setUpData}){
     let [data,setData]=useState([]);
-    useEffect(()=>{
-        
-
-    },[])
+    let [success,setSuccess]=useState(false);
+  
     const {register,handleSubmit,formState:{errors},reset,watch,getValues} = useForm({
         mode: "onTouched"
     });
     let Password = watch("Password");
-    const onSubmit=(data)=>{
+    let navigate=useNavigate();
+    
+   
+    const onSubmit=async(data)=>{
+        if(data){
+            //setSuccess(true);
+            setUpData(data.UserName);
+            navigate('/');
+
+        }
         console.log(data);
         USERACCOUNT.register(data)
         .then(res=>{
             console.log(res)
+            //localStorage.setItem("registerData",JSON.stringify(data));
         })
         .catch(err=>{
             console.log(err);
@@ -32,6 +42,9 @@ function Register(){
    
     return(
         <Fragment>
+            {/* {success?(
+                <div>Sucees</div>
+            ):( */}
             <div className={styles.container}>
                 <div className="container">
                      <div className={styles.form}>
@@ -97,17 +110,17 @@ function Register(){
                                         </span>
                                         <input type="Email" 
                                         className="form-control shadow-sm" 
-                                        placeholder="Example@gmail.com" name="Email"
-                                        {...register("Email",{required:"Email is required",
+                                        placeholder="Example@gmail.com" name="email"
+                                        {...register("email",{required:"Email is required",
                                         pattern:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/})}
                                         />
                                     </div>
-                                    <p>{errors.Email?.type==='required'&&
+                                    <p>{errors.email?.type==='required'&&
                                        <div className={styles.validate}>
                                         <span>Email is required</span>
                                        </div>}
                                     </p>
-                                    <p>{errors.Email?.type==='pattern'&& 
+                                    <p>{errors.email?.type==='pattern'&& 
                                        <div className={styles.validate}>
                                         <span>Email should be Example@gmail.com</span>
                                        </div>}
@@ -174,7 +187,7 @@ function Register(){
                                         <input type="password" 
                                         className="form-control shadow-sm" 
                                         placeholder="Confirm Password" name="ConfirmPassword"
-                                        {...register("ConfirmPassword",{required:"ConfirmPass is required",
+                                        {...register("ConfirmPassword",{required:"Confirm Password is required",
                                         validate: (value) => value === Password || "Confirm password does not match"}
                                         
                                         )}
@@ -191,7 +204,11 @@ function Register(){
                                         </div>}
                                     </p>
                                     <div className="mb-2">
-                                        <button className="btn shadow-lg">Register</button>
+                                        <button  className="btn shadow-lg">Register</button>
+                                    </div>
+                                    <div className="mt-3">
+                                        <span className={styles.para}>Already have Account?</span>
+                                        <Link to='/' className={styles.link}> Log in</Link>
                                     </div>
                                 </div>
                             </form>
@@ -199,6 +216,7 @@ function Register(){
                      </div>
                 </div>
             </div>
+            {/* )} */}
         </Fragment>
     )
 }

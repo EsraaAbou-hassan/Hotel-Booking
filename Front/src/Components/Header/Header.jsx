@@ -1,11 +1,18 @@
 import React, { Fragment } from 'react';
-import {NavLink,Link} from 'react-router-dom';
+import {NavLink,Link,useLocation,useH} from 'react-router-dom';
 import styles from './Header.module.scss';
 import img from '../../Images/59.jpg'
 
 
-function Header(){
-
+function Header({setStatus,myStatus,logData,upData}){
+    let location=useLocation();
+    const GoToSignUp=()=>{
+        console.log(location)
+          //history.push('/register');
+    }
+    const defaultStatus=()=>{
+        setStatus(false);
+    }
     return(
         <Fragment>
             <div className={styles.parentContainer}>
@@ -20,8 +27,10 @@ function Header(){
                                 <h4>Booking.com</h4>
                             </div>
                             <div className='col-md-4 col-6 d-flex justify-content-end  '>
-                                <button className='btn'>Log in</button>
-                                <button className='btn'>Sign up</button>
+                                <Link  to='/register' className='btn text-white mt-3'>{myStatus? logData:upData}</Link>
+                                <Link to='/' className='btn text-white mt-3' onClick={defaultStatus}>
+                                    Log out
+                                </Link>    
                             </div>
                         </div>
                         <div className='row' style={{marginTop:'100px',marginBottom:'-30px'}}>

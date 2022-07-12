@@ -31,7 +31,7 @@ namespace BookingApi.Controllers
             {
                 return NotFound();
             }
-            return await _context.Hotels.Where(l=>l.city==filterViewModeles.city).Include(w=>w.RoomsInHotel).ToListAsync();
+            return await _context.Hotels.Where(l=>l.city==filterViewModeles.city).ToListAsync();
         }
         // GET: api/BookingRoomToUsers
         [HttpGet]

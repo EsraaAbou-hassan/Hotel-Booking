@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import Login from '../Components/Login/Login';
 
-function LoginScreen(){
+function LoginScreen({setStatus,setLogData}){
     return(
         <Fragment>
-            <Login/>
+            <Login setStatus={setStatus} setLogData={setLogData}/>
         </Fragment>
     )
 }

@@ -1,11 +1,125 @@
 .container{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
     a{
         color: rgb(87, 86, 86);
     }
     a:hover{
         color: rgb(54, 54, 54);;
     }
-    .content{
-        width:100%;
+    .sideBar{
+        width: 80%;
+        padding: 20px;
+        color: #fff;
+    }
+    .hotel,.room,.user{
+        margin: 20px;
+       .link{
+        color: #fff;
+        text-decoration: none;
+        margin-left: 15px;
+       }
+       .link:hover{
+        color: rgb(241, 241, 241);
+       }
+    }
+    img{
+        border-radius: 50%;
+    }
+    table{
+       background-image: url('../../Images/hero-bg.png');
+        border: 1px solid #ccc;
+        box-shadow: 5px 5px 10px #ccc;
+        thead th{
+            background-color: #478e9a;
+            color: #fff;
+            padding: 15px 5px !important;
+        }
+        tbody td{
+            border-bottom: 1px solid #ccc;
+            padding: 10px 2px;
+        }
+        .details{
+            text-decoration: none;
+            border-radius: 5px;
+            color: #478e9a; 
+            padding: 5px;   
+            transition: 0.5s ease-in-out; 
+            font-size: 18px;
+            margin-top: 10px !important;
+
+        }
+        .edit{
+            text-decoration: none;
+            border-radius: 5px;
+            color: #ffbc6e; 
+            padding: 5px;   
+            transition: 0.5s ease-in-out; 
+        }
+        .edit:hover{
+            color: #fac78d;
+            transition: 0.5s ease-in-out; 
+        }
+        .del{
+            text-decoration: none;
+            border-radius: 5px;
+            color: #D9534F;  
+            padding: 5px; 
+            transition: 0.5s ease-in-out; 
+            background-color: transparent;
+            border: none;
+        }
+        .del:hover{ 
+            color: #ea736f;
+            transition: 0.5s ease-in-out; 
+        }
+    }
+    .add{
+        text-decoration: none;
+        background-color: #478e9a;
+        color: #fff;
+        border-radius: 5px;
+        padding:12px;
+        margin-left: -10px;
+        transition: 0.5s ease-in-out;     
+    }
+    .add:hover{
+        color: #fff;
+        background-color: #62a2ae;
+    }
+    
+   
+    @media screen and  (min-width:0px){
+        .sideBar{
+            background-color: #fff;
+            height: 50px;
+
+        }
+       
+        img{
+            width: 30px;
+            height: 30px;
+
+        }
+      
+
+    }
+    @media screen and  (min-width:678px){
+        .sideBar{
+              background-color:rgb(54, 54, 54);;
+              height: 100vh;
+        }
+        table{
+            width: 100%;
+        }
+        img{
+            width: 60px;
+            height: 60px;
+            
+        }
+      
+
     }
 }

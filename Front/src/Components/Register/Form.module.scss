@@ -1,0 +1,65 @@
+.container{
+ width: 100%;
+ height: 160vh;
+ border: 1px solid transparent;
+ background-image: url('../../Images/hero-bg.png');
+ background-repeat: repeat-y;
+ background-size: cover;
+ .form{
+    margin: auto;
+    margin-top: 40px;
+    box-shadow: 5px 5px 10px #ccc;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+ }
+ h3{
+    color: #327885;;
+ }
+ button{
+    width: 100%;
+    background-color: #327885;
+    color: #fff;
+ }
+
+ button:hover{
+    color: #fff;
+    background-color: #478e9a;
+ }
+ i{
+    color: #327885;
+ }
+ strong{
+   color: rgb(86, 86, 86);
+ }
+ .para{
+   color: rgb(86, 86, 86);
+   
+ }
+ .link{
+   text-decoration: none;
+   color: #478e9a;
+   font-weight: 500;
+
+}
+ .validate{
+   width: 100%;
+   //height: 35px;
+   margin-top: 10px;
+   background-color: #F8D7DA;
+   color: #842057;
+   line-height: 2;
+   border-radius: 5px;
+ }
+ @media screen and  (min-width:0px){
+    .form{
+        width: 80%;
+    }
+}
+@media screen and  (min-width:992px){
+    .form{
+        width: 35%;
+    }
+}
+
+}
