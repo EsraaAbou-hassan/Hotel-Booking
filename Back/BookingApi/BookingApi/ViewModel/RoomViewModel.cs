@@ -21,7 +21,7 @@ namespace BookingApi.ViewModel
         
         public int Price { get; set; }
         public string[] Images { get; set; }
-        public IFormFile[] ImagesFile { get; set; }
+        //public IFormFile[] ImagesFile { get; set; }
 
         public int[] Services { get; set; }
     }
