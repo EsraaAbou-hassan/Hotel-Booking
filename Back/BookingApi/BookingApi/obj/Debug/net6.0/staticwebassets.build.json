@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1FOj3DapSuMhgqIJKTUUKaI9YrMEdIyyuDBSgeZux4g=",
+  "Hash": "SayJLZGIktuNJueKlCQHJNK0S3hgkS2ep5r4hliJcWs=",
   "Source": "BookingApi",
   "BasePath": "_content/BookingApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "BookingApi\\wwwroot",
       "Source": "BookingApi",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\css\\site.css",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\css\\site.css",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\favicon.ico",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\favicon.ico",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11222012305.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11222012305.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/11222012305.jpg",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\11222012305.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11224443491jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11224443491jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/11224443491jpg",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\11224443491jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11224545162jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11224545162jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/11224545162jpg",
       "AssetKind": "All",
@@ -102,10 +102,27 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\11224545162jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223512217.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\11224742685.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/11224742685.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\11224742685.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223512217.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/12223512217.jpg",
       "AssetKind": "All",
@@ -119,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\12223512217.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223524951.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223524951.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/12223524951.jpg",
       "AssetKind": "All",
@@ -136,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\12223524951.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223550578.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223550578.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/12223550578.jpg",
       "AssetKind": "All",
@@ -153,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\12223550578.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223557473.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12223557473.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/12223557473.jpg",
       "AssetKind": "All",
@@ -170,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\12223557473.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12225153291.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\12225153291.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/12225153291.jpg",
       "AssetKind": "All",
@@ -187,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\12225153291.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\13221827853.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\13221827853.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/13221827853.jpg",
       "AssetKind": "All",
@@ -204,10 +221,61 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\13221827853.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\31222012344.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\13224247022.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/13224247022.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\13224247022.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\14222049005.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/14222049005.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\14222049005.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\20221857660.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/20221857660.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\20221857660.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\31222012344.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/31222012344.jpg",
       "AssetKind": "All",
@@ -221,10 +289,180 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\31222012344.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\9221216218.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\4224121418.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/4224121418.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\4224121418.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\4225452095.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/4225452095.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\4225452095.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\4225512301.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/4225512301.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\4225512301.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224211318.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224211318.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224211318.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224418814.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224418814.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224418814.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224442188.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224442188.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224442188.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224606258.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224606258.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224606258.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224700901.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224700901.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224700901.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5224936124.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5224936124.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5224936124.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\5225414333.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Hotels/5225414333.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Hotels\\5225414333.jpg"
+    },
+    {
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Hotels\\9221216218.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Hotels/9221216218.jpg",
       "AssetKind": "All",
@@ -238,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Hotels\\9221216218.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13221829594.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13221829594.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/13221829594.jpg",
       "AssetKind": "All",
@@ -255,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\13221829594.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13222103318.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13222103318.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/13222103318.jpg",
       "AssetKind": "All",
@@ -272,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\13222103318.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13223650331.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13223650331.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/13223650331.jpg",
       "AssetKind": "All",
@@ -289,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\13223650331.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223015516.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223015516.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/14223015516.jpg",
       "AssetKind": "All",
@@ -306,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\14223015516.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223700130.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223700130.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/14223700130.jpg",
       "AssetKind": "All",
@@ -323,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\14223700130.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223823227.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14223823227.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/14223823227.jpg",
       "AssetKind": "All",
@@ -340,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\14223823227.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14225254851.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\14225254851.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/14225254851.jpg",
       "AssetKind": "All",
@@ -357,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\14225254851.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31221829641.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31221829641.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/31221829641.jpg",
       "AssetKind": "All",
@@ -374,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\31221829641.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31222103321.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31222103321.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/31222103321.jpg",
       "AssetKind": "All",
@@ -391,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\31222103321.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223705130.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223705130.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/31223705130.jpg",
       "AssetKind": "All",
@@ -408,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\31223705130.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223718912.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223718912.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/31223718912.jpg",
       "AssetKind": "All",
@@ -425,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\31223718912.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223728066.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\31223728066.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/31223728066.jpg",
       "AssetKind": "All",
@@ -442,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\31223728066.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\59223554773.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\59223554773.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/59223554773.jpg",
       "AssetKind": "All",
@@ -459,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\59223554773.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\8223220480.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\8223220480.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/8223220480.jpg",
       "AssetKind": "All",
@@ -476,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\8223220480.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\8223337760.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\8223337760.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/8223337760.jpg",
       "AssetKind": "All",
@@ -493,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\8223337760.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\9224139467.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\9224139467.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/9224139467.jpg",
       "AssetKind": "All",
@@ -510,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\9224139467.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\9224437174.jpg",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\9224437174.jpg",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "Images/Rooms/9224437174.jpg",
       "AssetKind": "All",
@@ -527,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\9224437174.jpg"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\js\\site.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\js\\site.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -544,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -561,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -578,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -595,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -612,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -629,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -646,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -663,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -680,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -697,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -714,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -731,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -748,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -765,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -782,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -799,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -816,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -833,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "BookingApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\esraa\\Desktop\\Final Project\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "ContentRoot": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
       "BasePath": "_content/BookingApi",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",

@@ -282,7 +282,8 @@ namespace BookingApi.Controllers
                 images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
                     .Take(10).ToArray())
                     .Replace(" ", "-");
-                images[i] += DateTime.Now.ToString("yymmssfff")+".jpg";
+                string extention = Path.GetExtension(ImageFiles[i].FileName);
+                images[i] += DateTime.Now.ToString("yymmssfff")+extention;
                 var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Hotels", images[i]);
                 using (FileStream fs = new FileStream(imgPath, FileMode.Create))
                 {
