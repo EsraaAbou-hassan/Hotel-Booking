@@ -1,4 +1,6 @@
-﻿namespace BookingApi.Models
+﻿using System.Text.Json.Serialization;
+
+namespace BookingApi.Models
 {
     public class HotelFeatures
     {
@@ -8,6 +10,7 @@
 
         
         public virtual Feature Feature { get; set; }
+        [JsonIgnore]
         public virtual Hotel  Hotel{ get; set; }
     }
 }

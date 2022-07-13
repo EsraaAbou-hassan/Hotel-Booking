@@ -13,6 +13,7 @@
           "Microsoft.EntityFrameworkCore": "6.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.6",
+          "Microsoft.Net.Compilers.Toolset": "4.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.6",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
@@ -1125,6 +1126,7 @@
           }
         }
       },
+      "Microsoft.Net.Compilers.Toolset/4.2.0": {},
       "Microsoft.NET.StringTools/1.0.0": {
         "dependencies": {
           "System.Memory": "4.5.4",
@@ -2744,6 +2746,13 @@
       "sha512": "sha512-qbf1NslutDB4oLrriYTJpy7oB1pbh2ej2lEHd2IPDQH9C74ysOdhU5wAC7KoXblldbo7YsNR2QYFOqQM/b0Rsg==",
       "path": "microsoft.identitymodel.tokens/6.10.0",
       "hashPath": "microsoft.identitymodel.tokens.6.10.0.nupkg.sha512"
+    },
+    "Microsoft.Net.Compilers.Toolset/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hs7t4nRCp68XaWcGf3+SZ5Rud3Km6zQ8+jvR42tBohjVu2Nu2x2QhHVpEzQ56aZmGYEcZUztrTHLYyE0GYLpvg==",
+      "path": "microsoft.net.compilers.toolset/4.2.0",
+      "hashPath": "microsoft.net.compilers.toolset.4.2.0.nupkg.sha512"
     },
     "Microsoft.NET.StringTools/1.0.0": {
       "type": "package",

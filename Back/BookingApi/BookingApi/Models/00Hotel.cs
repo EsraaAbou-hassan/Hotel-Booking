@@ -28,6 +28,8 @@ namespace BookingApi.Models
         public IList<RoomsInHotel> RoomsInHotel { get; set; }
         public IList<HotelFeatures> HotelFeatures { get; set; }
 
+        public IList<BookingRoomToUser> BookingRoomToUsers { get; set; }
+
 
 
     }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookingApi.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -270,6 +270,7 @@ namespace BookingApi.Migrations
                 {
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: false),
                     NumberOfAdult = table.Column<int>(type: "int", nullable: false),
                     NumberOfChildren = table.Column<int>(type: "int", nullable: false),
                     NumberOfRooms = table.Column<int>(type: "int", nullable: false),
@@ -279,12 +280,18 @@ namespace BookingApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookingRoomToUser", x => new { x.UserId, x.RoomId });
+                    table.PrimaryKey("PK_BookingRoomToUser", x => new { x.UserId, x.RoomId, x.HotelId });
                     table.ForeignKey(
                         name: "FK_BookingRoomToUser_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookingRoomToUser_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_BookingRoomToUser_Rooms_RoomId",
@@ -401,6 +408,11 @@ namespace BookingApi.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookingRoomToUser_HotelId",
+                table: "BookingRoomToUser",
+                column: "HotelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookingRoomToUser_RoomId",

@@ -54,7 +54,7 @@ function AdminHome(){
                             <div className='col-lg-9 col-12  p-0'>
                                 <div className={styles.content}>
                                       <Routes>
-                                         <Route path='/hotels/'  element={<ListHotels/>}/>
+                                         <Route path='/hotels'  element={<ListHotels/>}/>
                                          <Route path='/add'  element={<AddHotel/>}/>
                                          <Route path='/edit/:id'  element={<UpdateHotel/>}/>
                                      </Routes>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookingApi.Migrations
 {
     [DbContext(typeof(Bookingdb))]
-    [Migration("20220709130603_initial")]
-    partial class initial
+    [Migration("20220713112334_update-relations")]
+    partial class updaterelations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace BookingApi.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
                     b.Property<int>("NumberOfAdult")
                         .HasColumnType("int");
 
@@ -51,6 +54,8 @@ namespace BookingApi.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("UserId", "RoomId");
+
+                    b.HasIndex("HotelId");
 
                     b.HasIndex("RoomId");
 
@@ -467,6 +472,12 @@ namespace BookingApi.Migrations
 
             modelBuilder.Entity("BookingApi.Models.BookingRoomToUser", b =>
                 {
+                    b.HasOne("BookingApi.Models.Hotel", "Hotel")
+                        .WithMany("BookingRoomToUsers")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BookingApi.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
@@ -478,6 +489,8 @@ namespace BookingApi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Hotel");
 
                     b.Navigation("Room");
 
@@ -621,6 +634,8 @@ namespace BookingApi.Migrations
 
             modelBuilder.Entity("BookingApi.Models.Hotel", b =>
                 {
+                    b.Navigation("BookingRoomToUsers");
+
                     b.Navigation("HotelFeatures");
 
                     b.Navigation("RoomsInHotel");

@@ -30,7 +30,7 @@ function App() {
         <Route path='/reserve' element={<Reserve/>}/>
         <Route path='/register' element={<RegisterScreen setUpData={setUpData}/>}/>
         <Route path='/payment' element={<PaymentScreen/>}/>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/admin/*' element={<Admin/>}/>
      </Routes>
    </Fragment>
   );

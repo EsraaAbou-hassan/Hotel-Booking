@@ -22,7 +22,23 @@ namespace BookingApi.Controllers
         {
             _context = context;
         }
+        [HttpPost("ChooseRoomAndHotel")]
 
+
+        public async Task<ActionResult<IEnumerable<Hotel>>> Filter(HotelFilterViewModeles filterViewModeles)
+        {
+            BookingRoomToUser b = _context.BookingRoomToUser
+                .FirstOrDefault(e => e.EndDate == filterViewModeles.EndDate && e.StartDate == filterViewModeles.StartDate);
+            if (filterViewModeles.city== null)
+            {
+                return NotFound();
+
+            }
+            return await _context.Hotels.Where(e => e.city == filterViewModeles.city).Include(t => t.RoomsInHotel).ThenInclude(f => f.Room).ThenInclude(r => r.RoomServices).ToListAsync();
+           //return await _context.RoomsInHotel.Include(d => d.Room).Include(e => e.Hotel)
+           //     .Where(w => w.Hotel.city == filterViewModeles.city).ToListAsync();
+         
+        }
         // GET: api/BookingRoomToUsers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookingRoomToUser>>> GetBookingRoomToUser()
@@ -55,13 +71,13 @@ namespace BookingApi.Controllers
         // PUT: api/BookingRoomToUsers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBookingRoomToUser(string id,int RoomId, DataUserAfterService nbookingRoomToUser)
+        public async Task<IActionResult> PutBookingRoomToUser(string id,int RoomId,int HotelId, DataUserAfterService nbookingRoomToUser)
         {
 
             BookingRoomToUser obookingRoomToUser = _context.BookingRoomToUser
-                                        .FirstOrDefault(w => w.UserId == id && w.RoomId == RoomId);
+                                        .FirstOrDefault(w => w.UserId == id && w.RoomId == RoomId&&w.HotelId==HotelId);
 
-            int HotelId = _context.RoomsInHotel.FirstOrDefault(w => w.RoomId == RoomId).HotelId;
+            //int HotelId = _context.RoomsInHotel.FirstOrDefault(w => w.RoomId == RoomId).HotelId;
 
 
             User user =_context.Users.FirstOrDefault(w=>w.Id== id);
@@ -85,6 +101,7 @@ namespace BookingApi.Controllers
                     bookingRoomToUser.RoomId = nbookingRoomToUser.RoomId;
 
                 bookingRoomToUser.UserId = id;
+                bookingRoomToUser.HotelId = HotelId;
                 _context.BookingRoomToUser.Add(bookingRoomToUser);
 
             }
@@ -142,6 +159,7 @@ namespace BookingApi.Controllers
             }
             bookingRoomToUser.UserId = nbookingRoomToUser.UserId;
             bookingRoomToUser.RoomId = nbookingRoomToUser.RoomId;
+            bookingRoomToUser.HotelId = nbookingRoomToUser.HotelId;
             bookingRoomToUser.NumberOfChildren = nbookingRoomToUser.NumberOfChildren;
             bookingRoomToUser.NumberOfRooms = nbookingRoomToUser.NumberOfRooms ;
             bookingRoomToUser.NumberOfAdult = nbookingRoomToUser.NumberOfAdult;

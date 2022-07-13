@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,13 +29,15 @@ namespace BookingApi.Controllers
 
         // GET: api/Hotels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hotel>>> GetHotels()
+        public async Task<ActionResult<IEnumerable<HoteImages>>> GetHotels()
         {
             if (_context.Hotels == null)
           {
               return NotFound();
           }
-            return await _context.Hotels.ToListAsync();
+            
+            return await _context.HoteImages.Include(w=>w.Hotel).ThenInclude(w=>w.HotelFeatures).ToListAsync();
+
         }
 
         // GET: api/Hotels/5
@@ -58,10 +61,9 @@ namespace BookingApi.Controllers
         // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("Update/{id}")]
-        // public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
+        public async Task<IActionResult> PutHotel(int id,[FromForm] HotelViewModel hotel)
 
-        public async Task<IActionResult> PutHotel(int id,HotelViewModel hotel)
-        {
+        { 
             Hotel oldhotel= await _context.Hotels.FindAsync(id);
             List<HoteImages> oldImages = await _context.HoteImages.ToListAsync();
             List<HotelFeatures> oldFeature= await _context.HotelFeatures.Where(e=>e.HotelId==id).ToListAsync();
@@ -79,25 +81,25 @@ namespace BookingApi.Controllers
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
         
             _context.Entry(oldhotel).State = EntityState.Modified;
-            //string[] images = UpdateImge(hotel.ImagesFile);
+            string[] images = UpdateImge(hotel.ImagesFile);
 
 
 
-           
-            //for (var i = 0; i <images?.Length; i++)
-            //{
 
-            //    if(_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
-            //    {
-            //        HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+            for (var i = 0; i < images?.Length; i++)
+            {
+
+                if (_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+                {
+                    HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+
+                    //HotelImages.HotelId = oldImages[i].HotelId;
+                    HotelImages.Name = images[i] != null ? images[i] : oldImages[i].Name;
+                    _context.Entry(HotelImages).State = EntityState.Modified;
+                }
 
 
-            //        HotelImages.Name = images[i] !=null ? images[i] : oldImages[i].Name;
-            //        _context.Entry(HotelImages).State = EntityState.Modified;
-            //    }
-
-                
-            //}
+            }
             if (hotel.Features[0] !=0) {
                 for (var ii = 0; ii < oldFeature.Count; ii++)
                 {
@@ -147,9 +149,9 @@ namespace BookingApi.Controllers
         // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        //        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
+        public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
 
-        public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
+        //public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
         {
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
@@ -174,19 +176,19 @@ namespace BookingApi.Controllers
           }
             _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
-            //string[] images = UpdateImge(hotel.ImagesFile);
-           
+            string[] images = UpdateImge(hotel.ImagesFile);
 
-            
-            //for (var i=0;i<images.Length;i++)
-            //{
-            //    HotelImages = new HoteImages();
-            //    HotelImages.HotelId = newhotel.HotelId;
-            //    HotelImages.Name = images[i];
-            //    _context.HoteImages.Add(HotelImages);
-            //    await _context.SaveChangesAsync();
-               
-            //}
+
+
+            for (var i = 0; i < images.Length; i++)
+            {
+                HotelImages = new HoteImages();
+                HotelImages.HotelId = newhotel.HotelId;
+                HotelImages.Name = images[i];
+                _context.HoteImages.Add(HotelImages);
+                await _context.SaveChangesAsync();
+
+            }
             List<Feature> feature = _context.Features.ToList();
    
 
@@ -280,11 +282,13 @@ namespace BookingApi.Controllers
                 images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
                     .Take(10).ToArray())
                     .Replace(" ", "-");
-                images[i] += DateTime.Now.ToString("yymmssfff");
-                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/Hotels", images[i]);
+                images[i] += DateTime.Now.ToString("yymmssfff")+".jpg";
+                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Hotels", images[i]);
                 using (FileStream fs = new FileStream(imgPath, FileMode.Create))
                 {
                     ImageFiles[i].CopyToAsync(fs);
+
+
                 }
 
             }

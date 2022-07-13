@@ -21,7 +21,7 @@ namespace BookingApi.database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BookingRoomToUser>().HasKey(sc => new { sc.UserId, sc.RoomId });
+            modelBuilder.Entity<BookingRoomToUser>().HasKey(sc => new { sc.UserId, sc.RoomId});
             modelBuilder.Entity<RoomsInHotel>().HasKey(sc => new { sc.HotelId, sc.RoomId });
             modelBuilder.Entity<HotelFeatures>().HasKey(sc => new { sc.FeatureId, sc.HotelId });
             modelBuilder.Entity<RoomService>().HasKey(sc => new { sc.ServiceId, sc.RoomId });
