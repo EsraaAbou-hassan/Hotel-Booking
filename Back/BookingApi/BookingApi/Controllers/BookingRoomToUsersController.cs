@@ -20,7 +20,8 @@ namespace BookingApi.Controllers
     public class BookingRoomToUsersController : ControllerBase
     {
         private readonly Bookingdb _context;
-      
+         private static List<RoomsInHotel> roomsInHoteles;
+
 
 
         public BookingRoomToUsersController(Bookingdb context)
@@ -42,7 +43,7 @@ namespace BookingApi.Controllers
 
             List<Hotel> hotels = _context.Hotels.Where(d => d.city == filterViewModeles.city).ToList();
 
-           List<RoomsInHotel> roomsInHoteles = new List<RoomsInHotel>();
+            roomsInHoteles = new List<RoomsInHotel>();
             for (var i = 0; i < hotels.Count; i++)
             {
                 RoomsInHotel RoomsInHotel=new RoomsInHotel();
@@ -62,7 +63,7 @@ namespace BookingApi.Controllers
                 }
                 else
                 {
-                    var b = _context.RoomsInHotel.Where(b => b.HotelId == hotels[i].HotelId).ToList();
+                    var b = _context.RoomsInHotel.Where(b => b.HotelId == hotels[i].HotelId).Include(t=>t.Room).ToList();
                     if (b.Count >0) { 
                         for (var ii = 0; ii < b.Count; ii++)
                         {
@@ -79,7 +80,7 @@ namespace BookingApi.Controllers
 
             }
 
-            List<HoteImages> avalibalehotels  = new List<HoteImages>();
+            List<HoteImages> avalibalehotels   = new List<HoteImages>();
 
             for (var i = 0; i < roomsInHoteles.Count; i++)
             {
@@ -117,51 +118,32 @@ namespace BookingApi.Controllers
 
 
         }
-        //[HttpPost("ChooseRoom")]
+        [HttpPost("ChooseRoom")]
 
 
-        //public async Task<ActionResult<IEnumerable<HoteImages>>> RoomFilter(int id)
-        //{
+        public async Task<ActionResult<IEnumerable<RoomImages>>> RoomFilter(int id)
+        {
+             List<RoomImages> rooms = new List<RoomImages>();
+            var avalibalerooms = roomsInHoteles.Where(e => e.HotelId == id).Select(o=>o.Room).ToList();
+
+            
+                for (var i = 0; i < avalibalerooms.Count; i++)
+                {
+
+                    RoomImages room = _context.RoomImages.Include(e => e.Room).ThenInclude(e => e.RoomServices).FirstOrDefault(ii => ii.RoomId == avalibalerooms[i].RoomId);
+                    rooms.Add(room);
 
 
 
-            //RoomImages Hotel = avalibalehotels.FirstOrDefault(r => r.HotelId == id);
 
-
-
-           // if (hotel == null)
-           // {
-           //     return NotFound();
-
-            // }
-
-            //List<RoomsInHotel> roomsInHoteles = new List<RoomsInHotel>(); 
-          
+                }
            
 
-            //List<RoomImages> rooms = new List<RoomImages>();
-            //if (roomsInHoteles.Count > 0)
-            //{
-            //    for (var i = 0; i < roomsInHoteles.Count; i++)
-            //    {
-            //        RoomImages room= _context.RoomImages.Include(e => e.Room).ThenInclude(e => e.RoomServices).FirstOrDefault(t => t.RoomId == roomsInHoteles[i].RoomId);
-            //        rooms.Add(room);
+
+            return rooms;
 
 
-
-
-            //    }
-            //}
-            //else
-            //{
-            //    rooms = _context.RoomImages.Include(e => e.Room).ThenInclude(e => e.RoomServices).ToList();
-            //}
-
-
-        //    return avalibalehotels;
-          
-
-        //}
+        }
         // GET: api/BookingRoomToUsers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookingRoomToUser>>> GetBookingRoomToUser()
