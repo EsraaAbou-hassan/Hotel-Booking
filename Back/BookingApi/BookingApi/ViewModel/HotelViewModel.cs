@@ -13,17 +13,7 @@ namespace BookingApi.ViewModel
         [Required]
         public string country { get; set; }
        
-       // public string[] Images { get; set; }
         public IFormFile[] ImagesFile { get; set; }
-
-
-
-
-
-
-
-
-
         public int[] Features { get; set; }
 
         [Required]

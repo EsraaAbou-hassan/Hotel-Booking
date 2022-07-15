@@ -10063,19 +10063,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\esraa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+      "projectUniqueName": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
       "projectName": "BookingApi",
-      "projectPath": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\graduationProject\\v3\\back\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\obj\\",
+      "projectPath": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\BookingApi.csproj",
+      "packagesPath": "C:\\Users\\esraa\\.nuget\\packages\\",
+      "outputPath": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\esraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10156,7 +10156,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

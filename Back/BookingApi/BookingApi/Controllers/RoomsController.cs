@@ -31,7 +31,7 @@ namespace BookingApi.Controllers
           {
               return NotFound();
           }
-            return await _context.RoomImages.Include(P=>P.Room).ThenInclude(O=>O.RoomServices).ToListAsync();
+            return await _context.RoomImages.Include(P=>P.Room).ThenInclude(i=>i.RoomsInHotel).Include(p=>p.Room).ThenInclude(k=>k.RoomServices).ToListAsync();
         }
 
         // GET: api/Rooms/5
@@ -302,7 +302,8 @@ namespace BookingApi.Controllers
                 images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
                     .Take(10).ToArray())
                     .Replace(" ", "-");
-                images[i] += DateTime.Now.ToString("yymmssfff")+".jpg";
+                string extention = Path.GetExtension(ImageFiles[i].FileName);
+                images[i] += DateTime.Now.ToString("yymmssfff") + extention;
                 var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Rooms", images[i]);
                 using (FileStream fs = new FileStream(imgPath, FileMode.Create))
                 {
