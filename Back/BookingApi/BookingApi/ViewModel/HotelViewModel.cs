@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace BookingApi.ViewModel
 {
@@ -14,7 +15,9 @@ namespace BookingApi.ViewModel
         public string country { get; set; }
        
         public IFormFile[] ImagesFile { get; set; }
-        public int[] Features { get; set; }
+        //public int[] Features { get; set; }
+        public  string Features { get; set; }
+
 
         [Required]
         public string description { get; set; }

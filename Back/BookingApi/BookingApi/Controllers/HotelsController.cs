@@ -28,18 +28,27 @@ namespace BookingApi.Controllers
         }
 
         // GET: api/Hotels
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<HoteImages>>> GetHotels()
+        [HttpGet("Top Rating")]
+        public async Task<ActionResult<IEnumerable<HoteImages>>> GetTopRatingOFHotels()
         {
             if (_context.Hotels == null)
           {
               return NotFound();
           }
             
-            return await _context.HoteImages.Include(w=>w.Hotel).ThenInclude(w=>w.HotelFeatures).ToListAsync();
+            return await _context.HoteImages.Include(w=>w.Hotel).ThenInclude(w => w.HotelFeatures).Where(u=>u.Hotel.rating==5).ToListAsync();
 
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<HoteImages>>> GetHotels()
+        {
+            if (_context.Hotels == null)
+            {
+                return NotFound();
+            }
+            return await _context.HoteImages.Include(w => w.Hotel).ThenInclude(w => w.HotelFeatures).ToListAsync();
 
+        }
         // GET: api/Hotels/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Hotel>> GetHotel(int id)
@@ -190,15 +199,19 @@ namespace BookingApi.Controllers
 
             }
             List<Feature> feature = _context.Features.ToList();
-   
 
-                for (var ii = 0; ii < hotel.Features.Length; ii++)
+          
+
+            int[] features = hotel.Features.Substring(1, hotel.Features.Length - 2).Split(',').Select(c => int.Parse(c)).ToArray();
+           
+
+            for (var ii = 0; ii < features.Length; ii++)
                 {
                         for (var i = 0; i < feature.Count; i++)
                         {
                             
 
-                            if (feature[i].FeatureId == hotel.Features[ii])
+                            if (feature[i].FeatureId == features[ii])
                                 {
                                 HotelFeatures hotelFeatures = new HotelFeatures();
                                 hotelFeatures.HotelId = newhotel.HotelId;
