@@ -31,7 +31,7 @@ namespace BookingApi.Controllers
         [HttpPost("ChooseHotel")]
 
 
-        public async Task<ActionResult<IEnumerable<HoteImages>>> HotelFilter(HotelFilterViewModeles filterViewModeles)
+        public async Task<ActionResult<IEnumerable<HotelData>>> HotelFilter(HotelFilterViewModeles filterViewModeles)
         {
             if (filterViewModeles == null)
             {
@@ -80,11 +80,11 @@ namespace BookingApi.Controllers
 
             }
 
-            List<HoteImages> avalibalehotels   = new List<HoteImages>();
+            List<Hotel> avalibalehotels   = new List<Hotel>();
 
             for (var i = 0; i < roomsInHoteles.Count; i++)
             {
-                HoteImages avalibalehotel = _context.HoteImages.Include(e => e.Hotel).ThenInclude(e => e.HotelFeatures).FirstOrDefault(t => t.HotelId == roomsInHoteles[i].HotelId);
+                Hotel avalibalehotel = _context.Hotels.FirstOrDefault(t => t.HotelId == roomsInHoteles[i].HotelId);
                 if (avalibalehotels.Count > 0)
                 {
 
@@ -111,41 +111,43 @@ namespace BookingApi.Controllers
 
             }
 
+            List<HotelData> HotelsData = new List<HotelData>();
 
+            HotelsData = HotelData(avalibalehotels);
 
-
-            return avalibalehotels;
+            return HotelsData;
 
 
         }
         [HttpPost("ChooseRoom")]
 
 
-        public async Task<ActionResult<IEnumerable<RoomImages>>> RoomFilter(int id)
+        public async Task<ActionResult<IEnumerable<RoomData>>> RoomFilter(int id)
         {
-             List<RoomImages> rooms = new List<RoomImages>();
+             List<Room> rooms = new List<Room>();
             var avalibalerooms = roomsInHoteles.Where(e => e.HotelId == id).Select(o=>o.Room).ToList();
 
             
                 for (var i = 0; i < avalibalerooms.Count; i++)
                 {
 
-                    RoomImages room = _context.RoomImages.Include(e => e.Room).ThenInclude(e => e.RoomServices).FirstOrDefault(ii => ii.RoomId == avalibalerooms[i].RoomId);
+                Room room = _context.Rooms.Include(i => i.RoomsInHotel).FirstOrDefault(ii => ii.RoomId == avalibalerooms[i].RoomId);
                     rooms.Add(room);
 
 
 
 
                 }
-           
 
+            List<RoomData> roomsData = new List<RoomData>();
 
-            return rooms;
+            roomsData = RoomsData(rooms);
+            return roomsData;
 
 
         }
         // GET: api/BookingRoomToUsers
-        [HttpGet]
+        [HttpGet("all booking for userr")]
         public async Task<ActionResult<IEnumerable<BookingRoomToUser>>> GetBookingRoomToUser()
         {
           if (_context.BookingRoomToUser == null)
@@ -156,14 +158,16 @@ namespace BookingApi.Controllers
         }
 
         // GET: api/BookingRoomToUsers/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<BookingRoomToUser>> GetBookingRoomToUser(string id)
+        [HttpGet]
+        public async Task<ActionResult<BookingRoomToUser>> GetBookingRoomToUser(string userName)
         {
-          if (_context.BookingRoomToUser == null)
+            User user = _context.Users.FirstOrDefault(w => w.UserName == userName);
+
+            if (_context.BookingRoomToUser == null)
           {
               return NotFound();
           }
-            var bookingRoomToUser = await _context.BookingRoomToUser.FindAsync(id);
+            var bookingRoomToUser = await _context.BookingRoomToUser.FindAsync(user.Id);
 
             if (bookingRoomToUser == null)
             {
@@ -175,17 +179,18 @@ namespace BookingApi.Controllers
 
         // PUT: api/BookingRoomToUsers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBookingRoomToUser(string id,int RoomId,int HotelId, DataUserAfterService nbookingRoomToUser)
+        [HttpPut]
+        public async Task<IActionResult> PutBookingRoomToUser(string userName,int RoomId,int HotelId, DataUserAfterService nbookingRoomToUser)
         {
+            User user = _context.Users.FirstOrDefault(w => w.UserName == userName);
+
 
             BookingRoomToUser obookingRoomToUser = _context.BookingRoomToUser
-                                        .FirstOrDefault(w => w.UserId == id && w.RoomId == RoomId&&w.HotelId==HotelId);
+                                        .FirstOrDefault(w => w.UserId ==user.Id && w.RoomId == RoomId&&w.HotelId==HotelId);
 
             //int HotelId = _context.RoomsInHotel.FirstOrDefault(w => w.RoomId == RoomId).HotelId;
 
 
-            User user =_context.Users.FirstOrDefault(w=>w.Id== id);
             float nprice;
             if (nbookingRoomToUser.NumberOfRooms != 0)
                 nprice = _context.RoomsInHotel.FirstOrDefault(w => w.RoomId == RoomId && w.HotelId == HotelId).Price * nbookingRoomToUser.NumberOfRooms;
@@ -199,13 +204,13 @@ namespace BookingApi.Controllers
             }
             if (RoomId != nbookingRoomToUser.RoomId)
             {
-                _context.BookingRoomToUser.Remove(_context.BookingRoomToUser.FirstOrDefault(f => f.RoomId == RoomId && f.UserId == id));
+                _context.BookingRoomToUser.Remove(_context.BookingRoomToUser.FirstOrDefault(f => f.RoomId == RoomId && f.UserId == user.Id));
                if(nbookingRoomToUser.RoomId==0)
                     bookingRoomToUser.RoomId = obookingRoomToUser.RoomId;
                else
                     bookingRoomToUser.RoomId = nbookingRoomToUser.RoomId;
 
-                bookingRoomToUser.UserId = id;
+                bookingRoomToUser.UserId = user.Id;
                 bookingRoomToUser.HotelId = HotelId;
                 _context.BookingRoomToUser.Add(bookingRoomToUser);
 
@@ -236,7 +241,7 @@ namespace BookingApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookingRoomToUserExists(nbookingRoomToUser.UserId))
+                if (user==null)
                 {
                     return NotFound();
                 }
@@ -262,7 +267,7 @@ namespace BookingApi.Controllers
             {
                 return BadRequest();
             }
-            bookingRoomToUser.UserId = nbookingRoomToUser.UserId;
+            bookingRoomToUser.UserId =_context.Users.FirstOrDefault(h=>h.UserName== nbookingRoomToUser.Usename).Id;
             bookingRoomToUser.RoomId = nbookingRoomToUser.RoomId;
             bookingRoomToUser.HotelId = nbookingRoomToUser.HotelId;
             bookingRoomToUser.NumberOfChildren = nbookingRoomToUser.NumberOfChildren;
@@ -319,13 +324,15 @@ namespace BookingApi.Controllers
 
         // DELETE: api/BookingRoomToUsers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBookingRoomToUser(string id, int RoomId)
+        public async Task<IActionResult> DeleteBookingRoomToUser(string userName, int RoomId)
         {
+            User user = _context.Users.FirstOrDefault(w => w.UserName == userName);
+
             if (_context.BookingRoomToUser == null)
             {
                 return NotFound();
             }
-            var bookingRoomToUser = await _context.BookingRoomToUser.FirstOrDefaultAsync(d=>d.UserId==id&&d.RoomId==RoomId);
+            var bookingRoomToUser = await _context.BookingRoomToUser.FirstOrDefaultAsync(d=>d.UserId== user.Id && d.RoomId==RoomId);
             if (bookingRoomToUser == null)
             {
                 return NotFound();
@@ -337,9 +344,66 @@ namespace BookingApi.Controllers
             return NoContent();
         }
 
-        private bool BookingRoomToUserExists(string id)
+        private bool BookingRoomToUserExists(string userName)
         {
-            return (_context.BookingRoomToUser?.Any(e => e.UserId == id)).GetValueOrDefault();
+            User user = _context.Users.FirstOrDefault(w => w.UserName == userName);
+
+            return (_context.BookingRoomToUser?.Any(e => e.UserId == user.Id)).GetValueOrDefault();
+        }
+        private List<HotelData> HotelData(List<Hotel> hotels)
+        {
+            List<HotelData> HotelsData = new List<HotelData>();
+
+            for (var i = 0; i < hotels.Count; i++)
+            {
+                Hotel Hotel = hotels[i];
+                List<HotelFeatures> HotelFeatures = _context.HotelFeatures.Include(u => u.Feature).Where(J => J.HotelId == hotels[i].HotelId).ToList();
+                List<HoteImages> HoteImages = _context.HoteImages.Where(J => J.HotelId == hotels[i].HotelId).ToList();
+                List<Feature> Features = new List<Feature>();
+
+                for (var ii = 0; ii < HotelFeatures.Count; ii++)
+                {
+                    Features = _context.Features.Where(J => J.FeatureId == HotelFeatures[ii].FeatureId).ToList();
+
+                }
+
+                HotelData HotelData = new HotelData();
+                HotelData.hotelData = Hotel;
+                HotelData.hotelImages = HoteImages;
+                HotelData.hotelFeatures = HotelFeatures;
+                HotelData.Feature = Features;
+                HotelsData.Add(HotelData);
+
+            }
+            return HotelsData;
+        }
+        private List<RoomData> RoomsData(List<Room> rooms)
+        {
+            List<RoomData> roomsData = new List<RoomData>();
+            for (var i = 0; i < rooms.Count; i++)
+            {
+                Room room = rooms[i];
+                List<RoomService> RoomService = _context.RoomServices.Include(u => u.Service).Where(J => J.RoomId == rooms[i].RoomId).ToList();
+
+                List<RoomImages> RoomImages = _context.RoomImages.Where(J => J.RoomId == rooms[i].RoomId).ToList();
+                List<Service> services = new List<Service>();
+
+                for (var ii = 0; ii < RoomService.Count; ii++)
+                {
+                    services = _context.Services.Where(J => J.ServiceId == RoomService[ii].ServiceId).ToList();
+
+                }
+
+                RoomData roomData = new RoomData();
+                roomData.roomData = room;
+                roomData.roomImages = RoomImages;
+                roomData.roomService = RoomService;
+                roomData.Service = services;
+                roomsData.Add(roomData);
+
+            }
+            return roomsData;
+
         }
     }
 }

@@ -26,23 +26,34 @@ namespace BookingApi.Controllers
 
         // GET: api/Rooms
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RoomImages>>> GetRooms()
+
+        public async Task<ActionResult<IEnumerable<RoomData>>> GetRooms()
+
         {
-          if (_context.Rooms == null)
-          {
-              return NotFound();
-          }
-            return await _context.RoomImages.Include(P=>P.Room).ThenInclude(i=>i.RoomsInHotel).Include(p=>p.Room).ThenInclude(k=>k.RoomServices).ToListAsync();
+            List<RoomData> roomsData = new List<RoomData>();
+
+            List<Room> rooms = _context.Rooms.Include(g => g.RoomsInHotel).ToList();
+
+
+            if (_context.Rooms == null)
+            {
+                return NotFound();
+            }
+            roomsData = RoomsData(rooms);
+
+
+
+            return roomsData;
         }
 
         // GET: api/Rooms/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
-          if (_context.Rooms == null)
-          {
-              return NotFound();
-          }
+            if (_context.Rooms == null)
+            {
+                return NotFound();
+            }
             var room = await _context.Rooms.FindAsync(id);
 
             if (room == null)
@@ -60,20 +71,20 @@ namespace BookingApi.Controllers
 
         // public async Task<IActionResult> UpdateRoom(int id, RoomViewModel nroom)
         {
-            Room room =  await _context.Rooms.FindAsync(id);
+            Room room = await _context.Rooms.FindAsync(id);
             List<RoomImages> oldImages = await _context.RoomImages.ToListAsync();
-            List<RoomsInHotel> oldroomsInHotels = await _context.RoomsInHotel.ToListAsync(); 
-            List<RoomService> oldServices=await _context.RoomServices.Where(i=>i.RoomId==id).ToListAsync();
+            List<RoomsInHotel> oldroomsInHotels = await _context.RoomsInHotel.ToListAsync();
+            List<RoomService> oldServices = await _context.RoomServices.Where(i => i.RoomId == id).ToListAsync();
             if (id != room.RoomId)
             {
                 return BadRequest();
             }
-            
+
             room.type = nroom.type != "string" ? nroom.type : room.type;
             room.description = nroom.description != "string" ? nroom.description : room.description;
             room.roomNumber = nroom.roomNumber != 0 ? nroom.roomNumber : room.roomNumber;
 
-            room.maxPeople = nroom.maxPeople != 0 ? nroom.maxPeople : room.maxPeople ;
+            room.maxPeople = nroom.maxPeople != 0 ? nroom.maxPeople : room.maxPeople;
             _context.Entry(room).State = EntityState.Modified;
 
             string[] images = UpdateImge(nroom.ImagesFile);
@@ -97,30 +108,33 @@ namespace BookingApi.Controllers
 
 
             }
-            if (oldroomsInHotels.Count > 0) { 
-                    for (var i = 0; i < oldroomsInHotels?.Count; i++)
+            if (oldroomsInHotels.Count > 0)
+            {
+                for (var i = 0; i < oldroomsInHotels?.Count; i++)
                 {
-               
+
                     RoomsInHotel roomsInHotel = await _context.RoomsInHotel.FirstOrDefaultAsync(d => d.RoomId == id && d.HotelId == oldroomsInHotels[i].HotelId);
-                if (roomsInHotel!=null) {
-                    //roomsInHotel.HotelId = nroom.HotelId != 0 ? nroom.HotelId : roomsInHotel.HotelId;
-                    //roomsInHotel.RoomId = room.RoomId;
-                    roomsInHotel.Price = nroom.Price != 0 ? nroom.Price : roomsInHotel.Price;
-                    _context.Entry(roomsInHotel).State = EntityState.Modified;
-                }
+                    if (roomsInHotel != null)
+                    {
+                        //roomsInHotel.HotelId = nroom.HotelId != 0 ? nroom.HotelId : roomsInHotel.HotelId;
+                        //roomsInHotel.RoomId = room.RoomId;
+                        roomsInHotel.Price = nroom.Price != 0 ? nroom.Price : roomsInHotel.Price;
+                        _context.Entry(roomsInHotel).State = EntityState.Modified;
+                    }
                     //else
-                //{
-                //    RoomsInHotel hotelroom = new RoomsInHotel();
-                //    hotelroom.HotelId = nroom.HotelId;
-                //    hotelroom.RoomId = room.RoomId;
-                //    hotelroom.Price = nroom.Price;
-                //    _context.RoomsInHotel.Add(hotelroom);
-                //}
+                    //{
+                    //    RoomsInHotel hotelroom = new RoomsInHotel();
+                    //    hotelroom.HotelId = nroom.HotelId;
+                    //    hotelroom.RoomId = room.RoomId;
+                    //    hotelroom.Price = nroom.Price;
+                    //    _context.RoomsInHotel.Add(hotelroom);
+                    //}
 
-                   
+
 
                 }
-            }else
+            }
+            else
             {
                 RoomsInHotel hotelrooms = new RoomsInHotel();
                 hotelrooms.HotelId = nroom.HotelId;
@@ -128,7 +142,7 @@ namespace BookingApi.Controllers
                 hotelrooms.Price = nroom.Price;
                 _context.RoomsInHotel.Add(hotelrooms);
             }
-            if (nroom.Services[0]!=0)
+            if (nroom.Services[0] != 0)
             {
                 for (var ii = 0; ii < oldServices.Count; ii++)
                 {
@@ -140,10 +154,10 @@ namespace BookingApi.Controllers
 
                 for (var i = 0; i < nroom.Services?.Length; i++)
                 {
-                    RoomService roomService= new RoomService();
+                    RoomService roomService = new RoomService();
                     roomService.RoomId = id;
 
-                    roomService.ServiceId= nroom.Services[i];
+                    roomService.ServiceId = nroom.Services[i];
 
                     _context.RoomServices.Add(roomService);
 
@@ -176,13 +190,13 @@ namespace BookingApi.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("Add")]
-        public async Task<ActionResult<Room>> AddRoom([FromForm]RoomViewModel nroom)
-       // public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
+        public async Task<ActionResult<Room>> AddRoom([FromForm] RoomViewModel nroom)
+        // public async Task<ActionResult<Room>> AddRoom(RoomViewModel nroom)
         {
-            
+
             if (_context.Rooms == null)
             {
-              return Problem("Entity set 'Bookingdb.Rooms'  is null.");
+                return Problem("Entity set 'Bookingdb.Rooms'  is null.");
             }
             else
             {
@@ -224,11 +238,11 @@ namespace BookingApi.Controllers
                         if (services[i].ServiceId == nroom.Services[ii])
                         {
                             RoomService roomService = new RoomService();
-                            roomService.ServiceId=nroom.Services[ii];
-                            roomService.RoomId =room.RoomId;
+                            roomService.ServiceId = nroom.Services[ii];
+                            roomService.RoomId = room.RoomId;
 
                             _context.RoomServices.Add(roomService);
-                            
+
 
                         }
                         else
@@ -243,9 +257,9 @@ namespace BookingApi.Controllers
                 _context.SaveChangesAsync();
                 return (Ok("data added successfully"));
             }
-           
 
-            
+
+
         }
 
         // DELETE: api/Rooms/5
@@ -261,38 +275,46 @@ namespace BookingApi.Controllers
             {
                 return NotFound();
             }
-            else
+
+
+            List<RoomImages> roomImages = _context.RoomImages.ToList();
+            for (var i = 0; i < roomImages.Count; i++)
             {
-                
-                List<RoomImages> roomImages = _context.RoomImages.ToList();
-                for (var i = 0; i < roomImages.Count; i++)
-                {
-                    RoomImages r = _context.RoomImages.FirstOrDefault(d => d.RoomId == id);
-                    _context.RoomImages.Remove(r);
+                RoomImages RoomImages = _context.RoomImages.FirstOrDefault(d => d.RoomId == id);
+                if (RoomImages != null)
 
-                }
+                    _context.RoomImages.Remove(RoomImages);
 
-
-                RoomsInHotel roomsInHotel = _context.RoomsInHotel.FirstOrDefault(d => d.RoomId == id);
-                _context.RoomsInHotel.Remove(roomsInHotel);
-
-                _context.Rooms.Remove(room);
-
-                await _context.SaveChangesAsync();
-               
             }
+
+            List<RoomService> RoomServices = _context.RoomServices.ToList();
+            for (var i = 0; i < RoomServices.Count; i++)
+            {
+                RoomService RoomService = _context.RoomServices.FirstOrDefault(d => d.RoomId == id);
+                if (RoomService != null)
+                    _context.RoomServices.Remove(RoomService);
+
+            }
+
+
+
+
+
+
             List<RoomsInHotel> roomsInHotels = _context.RoomsInHotel.ToList();
             for (var h = 0; h < roomsInHotels.Count; h++)
             {
                 RoomsInHotel roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId);
-                _context.RoomsInHotel.Remove(roomsInHotel);
+                if (roomsInHotel != null)
+                    _context.RoomsInHotel.Remove(roomsInHotel);
 
             }
+            _context.Rooms.Remove(room);
+
             await _context.SaveChangesAsync();
             return Ok("data deleted Successfully");
 
 
-            return NoContent();
         }
         private string[] UpdateImge(IFormFile[] ImageFiles)
         {
@@ -313,12 +335,40 @@ namespace BookingApi.Controllers
 
             }
             return images;
-    
 
-}
-private bool RoomExists(int id)
+
+        }
+        private bool RoomExists(int id)
         {
             return (_context.Rooms?.Any(e => e.RoomId == id)).GetValueOrDefault();
+        }
+       private List<RoomData> RoomsData(List<Room> rooms)
+        {
+            List<RoomData> roomsData = new List<RoomData>();
+            for (var i = 0; i < rooms.Count; i++)
+            {
+                Room room = rooms[i];
+                List<RoomService> RoomService = _context.RoomServices.Include(u => u.Service).Where(J => J.RoomId == rooms[i].RoomId).ToList();
+
+                List<RoomImages> RoomImages = _context.RoomImages.Where(J => J.RoomId == rooms[i].RoomId).ToList();
+                List<Service> services = new List<Service>();
+
+                for (var ii = 0; ii < RoomService.Count; ii++)
+                {
+                    services = _context.Services.Where(J => J.ServiceId == RoomService[ii].ServiceId).ToList();
+
+                }
+
+                RoomData roomData = new RoomData();
+                roomData.roomData = room;
+                roomData.roomImages = RoomImages;
+                roomData.roomService = RoomService;
+                roomData.Service = services;
+                roomsData.Add(roomData);
+
+            }
+            return roomsData;
+
         }
     }
 }

@@ -28,25 +28,34 @@ namespace BookingApi.Controllers
         }
 
         // GET: api/Hotels
-        [HttpGet("Top Rating")]
-        public async Task<ActionResult<IEnumerable<HoteImages>>> GetTopRatingOFHotels()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<HotelData>>> GetHotels()
         {
+            List<HotelData> HotelsData = new List<HotelData>();
+
+            List<Hotel> hotels = _context.Hotels.Include(g => g.RoomsInHotel).ToList();
             if (_context.Hotels == null)
           {
               return NotFound();
           }
-            
-            return await _context.HoteImages.Include(w=>w.Hotel).ThenInclude(w => w.HotelFeatures).Where(u=>u.Hotel.rating==5).ToListAsync();
+            HotelsData = HotelData(hotels);
+            return HotelsData;
 
         }
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<HoteImages>>> GetHotels()
+        [HttpGet("Top Rating")]
+        public async Task<ActionResult<IEnumerable<HotelData>>> GetTopRatingOFHotels()
         {
+            List<HotelData> HotelsData = new List<HotelData>();
+
+            List<Hotel> hotels = _context.Hotels.Include(g => g.RoomsInHotel).Where(u => u.rating == 5).ToList();
             if (_context.Hotels == null)
             {
                 return NotFound();
             }
-            return await _context.HoteImages.Include(w => w.Hotel).ThenInclude(w => w.HotelFeatures).ToListAsync();
+            HotelsData = HotelData(hotels);
+
+            return HotelsData;
+
 
         }
         // GET: api/Hotels/5
@@ -160,7 +169,6 @@ namespace BookingApi.Controllers
         [HttpPost("Add")]
         public async Task<ActionResult<Hotel>> PostHotel([FromForm] HotelViewModel hotel)
 
-        //public async Task<ActionResult<Hotel>> PostHotel(HotelViewModel hotel)
         {
             Hotel newhotel = new Hotel();
             HoteImages HotelImages ;
@@ -251,19 +259,20 @@ namespace BookingApi.Controllers
 
              else
             {
-                _context.Hotels.Remove(hotel);
                 List<HoteImages> HoteImages = _context.HoteImages.ToList();
                 for (var i = 0; i < HoteImages.Count; i++)
                 {
-                    HoteImages r = _context.HoteImages.FirstOrDefault(d => d.HotelId == id);
-                    _context.HoteImages.Remove(r);
+                    HoteImages rr = _context.HoteImages.FirstOrDefault(d => d.HotelId == id);
+                    if (rr!= null)
+                        _context.HoteImages.Remove(rr);
 
                 }
                 List<HotelFeatures> hotelFeatures = _context.HotelFeatures.ToList();
                 for (var i = 0; i < hotelFeatures.Count; i++)
                 {
                     HotelFeatures r = _context.HotelFeatures.FirstOrDefault(d => d.HotelId == id);
-                    _context.HotelFeatures.Remove(r);
+                    if(r != null)
+                      _context.HotelFeatures.Remove(r);
 
                 }
 
@@ -275,9 +284,14 @@ namespace BookingApi.Controllers
                 for (var h = 0; h < roomsInHotels.Count; h++)
                 {
                     RoomsInHotel  roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId);
-                    _context.RoomsInHotel.Remove(roomsInHotel);
+
+                    if (roomsInHotel != null)
+
+                        _context.RoomsInHotel.Remove(roomsInHotel);
 
                 }
+                _context.Hotels.Remove(hotel);
+
                 await _context.SaveChangesAsync();
 
                 return Ok("data deleted Successfully");
@@ -313,6 +327,33 @@ namespace BookingApi.Controllers
         private bool HotelExists(int id)
         {
             return (_context.Hotels?.Any(e => e.HotelId == id)).GetValueOrDefault();
+        }
+        private List<HotelData> HotelData(List<Hotel> hotels)
+        {
+            List<HotelData> HotelsData = new List<HotelData>();
+
+            for (var i = 0; i < hotels.Count; i++)
+            {
+                Hotel Hotel = hotels[i];
+                List<HotelFeatures> HotelFeatures = _context.HotelFeatures.Include(u => u.Feature).Where(J => J.HotelId == hotels[i].HotelId).ToList();
+                List<HoteImages> HoteImages = _context.HoteImages.Where(J => J.HotelId == hotels[i].HotelId).ToList();
+                List<Feature> Features = new List<Feature>();
+
+                for (var ii = 0; ii < HotelFeatures.Count; ii++)
+                {
+                    Features = _context.Features.Where(J => J.FeatureId == HotelFeatures[ii].FeatureId).ToList();
+
+                }
+
+                HotelData HotelData = new HotelData();
+                HotelData.hotelData = Hotel;
+                HotelData.hotelImages = HoteImages;
+                HotelData.hotelFeatures = HotelFeatures;
+                HotelData.Feature = Features;
+                HotelsData.Add(HotelData);
+
+            }
+            return HotelsData;
         }
     }
 }
