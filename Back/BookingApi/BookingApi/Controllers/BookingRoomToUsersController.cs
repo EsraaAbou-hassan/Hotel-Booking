@@ -20,7 +20,7 @@ namespace BookingApi.Controllers
     public class BookingRoomToUsersController : ControllerBase
     {
         private readonly Bookingdb _context;
-         private static List<RoomsInHotel> roomsInHoteles;
+        private static List<RoomsInHotel> roomsInHoteles;
 
 
 
@@ -46,7 +46,7 @@ namespace BookingApi.Controllers
             roomsInHoteles = new List<RoomsInHotel>();
             for (var i = 0; i < hotels.Count; i++)
             {
-                RoomsInHotel RoomsInHotel=new RoomsInHotel();
+                RoomsInHotel RoomsInHotel = new RoomsInHotel();
                 if (BookingRoomToUsers.Count > 0)
                 {
                     for (var ii = 0; ii < BookingRoomToUsers.Count; ii++)
@@ -63,24 +63,24 @@ namespace BookingApi.Controllers
                 }
                 else
                 {
-                    var b = _context.RoomsInHotel.Where(b => b.HotelId == hotels[i].HotelId).Include(t=>t.Room).ToList();
-                    if (b.Count >0) { 
+                    var b = _context.RoomsInHotel.Where(b => b.HotelId == hotels[i].HotelId).Include(t => t.Room).ToList();
+                    if (b.Count > 0) {
                         for (var ii = 0; ii < b.Count; ii++)
                         {
 
 
                             roomsInHoteles.Add(b[ii]);
-                            
+
 
                         }
                     }
                 }
-             
+
 
 
             }
 
-            List<Hotel> avalibalehotels   = new List<Hotel>();
+            List<Hotel> avalibalehotels = new List<Hotel>();
 
             for (var i = 0; i < roomsInHoteles.Count; i++)
             {
@@ -88,18 +88,18 @@ namespace BookingApi.Controllers
                 if (avalibalehotels.Count > 0)
                 {
 
-                   
+
                     var t = avalibalehotels.FindAll(e => e.HotelId == avalibalehotel.HotelId);
-                        if (t.Count == 0)
-                        {
+                    if (t.Count == 0)
+                    {
 
-                            avalibalehotels.Add(avalibalehotel);
-                        }
-
-
+                        avalibalehotels.Add(avalibalehotel);
+                    }
 
 
-                    
+
+
+
 
                 }
                 else
@@ -124,20 +124,20 @@ namespace BookingApi.Controllers
 
         public async Task<ActionResult<IEnumerable<RoomData>>> RoomFilter(int id)
         {
-             List<Room> rooms = new List<Room>();
-            var avalibalerooms = roomsInHoteles.Where(e => e.HotelId == id).Select(o=>o.Room).ToList();
+            List<Room> rooms = new List<Room>();
+            var avalibalerooms = roomsInHoteles.Where(e => e.HotelId == id).Select(o => o.Room).ToList();
 
-            
-                for (var i = 0; i < avalibalerooms.Count; i++)
-                {
+
+            for (var i = 0; i < avalibalerooms.Count; i++)
+            {
 
                 Room room = _context.Rooms.Include(i => i.RoomsInHotel).FirstOrDefault(ii => ii.RoomId == avalibalerooms[i].RoomId);
-                    rooms.Add(room);
+                rooms.Add(room);
 
 
 
 
-                }
+            }
 
             List<RoomData> roomsData = new List<RoomData>();
 
@@ -150,10 +150,10 @@ namespace BookingApi.Controllers
         [HttpGet("all booking for userr")]
         public async Task<ActionResult<IEnumerable<BookingRoomToUser>>> GetBookingRoomToUser()
         {
-          if (_context.BookingRoomToUser == null)
-          {
-              return NotFound();
-          }
+            if (_context.BookingRoomToUser == null)
+            {
+                return NotFound();
+            }
             return await _context.BookingRoomToUser.ToListAsync();
         }
 
@@ -167,7 +167,7 @@ namespace BookingApi.Controllers
           {
               return NotFound();
           }
-            var bookingRoomToUser = await _context.BookingRoomToUser.FindAsync(user.Id);
+            BookingRoomToUser bookingRoomToUser = await _context.BookingRoomToUser.FirstOrDefaultAsync(r=>r.UserId==user.Id);
 
             if (bookingRoomToUser == null)
             {
@@ -363,7 +363,10 @@ namespace BookingApi.Controllers
 
                 for (var ii = 0; ii < HotelFeatures.Count; ii++)
                 {
-                    Features = _context.Features.Where(J => J.FeatureId == HotelFeatures[ii].FeatureId).ToList();
+                    Feature Feature= new Feature();
+
+                    Feature = _context.Features.FirstOrDefault(J => J.FeatureId == HotelFeatures[ii].FeatureId);
+                    Features.Add(Feature);  
 
                 }
 
@@ -390,7 +393,10 @@ namespace BookingApi.Controllers
 
                 for (var ii = 0; ii < RoomService.Count; ii++)
                 {
-                    services = _context.Services.Where(J => J.ServiceId == RoomService[ii].ServiceId).ToList();
+                    Service service = new Service();
+
+                    service = _context.Services.FirstOrDefault(J => J.ServiceId == RoomService[ii].ServiceId);
+                    services.Add(service);
 
                 }
 

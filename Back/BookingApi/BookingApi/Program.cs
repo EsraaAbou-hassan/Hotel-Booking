@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
 //using System.Web.HttpUtility.Cors;
 
 
@@ -82,11 +83,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(o=>o.SwaggerEndpoint("/swagger/v1/swagger.json", "Booking v1"));
 }
 
-app.UseCors();
 
 app.UseHttpsRedirection();
 app.UseCors(s=>s.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "Images")),
+    RequestPath = "/Images"
+}) ;
 app.UseAuthentication();
 app.UseAuthorization();
 

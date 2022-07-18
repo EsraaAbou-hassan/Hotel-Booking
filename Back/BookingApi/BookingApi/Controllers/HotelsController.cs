@@ -341,8 +341,10 @@ namespace BookingApi.Controllers
 
                 for (var ii = 0; ii < HotelFeatures.Count; ii++)
                 {
-                    Features = _context.Features.Where(J => J.FeatureId == HotelFeatures[ii].FeatureId).ToList();
+                    Feature Feature = new Feature();
 
+                    Feature = _context.Features.FirstOrDefault(J => J.FeatureId == HotelFeatures[ii].FeatureId);
+                    Features.Add(Feature);
                 }
 
                 HotelData HotelData = new HotelData();

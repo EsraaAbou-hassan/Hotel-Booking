@@ -226,16 +226,17 @@ namespace BookingApi.Controllers
                     _context.RoomImages.Add(roomImages);
                     await _context.SaveChangesAsync();
                 }
-                List<Service> services = _context.Services.ToList();
+                List<Service> Services = _context.Services.ToList();
+                int[] services = nroom.Services.Substring(1, nroom.Services.Length - 2).Split(',').Select(c => int.Parse(c)).ToArray();
 
 
-                for (var ii = 0; ii < nroom.Services.Length; ii++)
+                for (var ii = 0; ii < services.Length; ii++)
                 {
-                    for (var i = 0; i < services.Count; i++)
+                    for (var i = 0; i < Services.Count; i++)
                     {
 
 
-                        if (services[i].ServiceId == nroom.Services[ii])
+                        if (Services[i].ServiceId == services[ii])
                         {
                             RoomService roomService = new RoomService();
                             roomService.ServiceId = nroom.Services[ii];
@@ -355,8 +356,10 @@ namespace BookingApi.Controllers
 
                 for (var ii = 0; ii < RoomService.Count; ii++)
                 {
-                    services = _context.Services.Where(J => J.ServiceId == RoomService[ii].ServiceId).ToList();
+                    Service service = new Service();
 
+                    service = _context.Services.FirstOrDefault(J => J.ServiceId == RoomService[ii].ServiceId);
+                    services.Add(service);
                 }
 
                 RoomData roomData = new RoomData();

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "33nx3T/pBM+zuQ7ImsdVkX921uhPGttIlLCq3vdOiQI=",
+  "Hash": "cF/t8Krg8d1c99iNP3lEkHABt87NooUe3UOIhbTEVvo=",
   "Source": "BookingApi",
   "BasePath": "_content/BookingApi",
   "Mode": "Default",
@@ -797,6 +797,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Rooms\\12220932290.jpg"
+    },
+    {
+      "Identity": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\12225736334.jpg",
+      "SourceId": "BookingApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\",
+      "BasePath": "_content/BookingApi",
+      "RelativePath": "Images/Rooms/12225736334.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Rooms\\12225736334.jpg"
     },
     {
       "Identity": "E:\\Final Project\\Hotel-Booking\\Back\\BookingApi\\BookingApi\\wwwroot\\Images\\Rooms\\13221829594.jpg",

@@ -8,7 +8,6 @@ namespace BookingApi.Models
         public int RoomId { get; set; }
 
         public string UserId { get; set; }
-        [ForeignKey("Hotel")]
         public int HotelId { get; set; }
         public int NumberOfAdult { get; set; }
         public int NumberOfChildren { get; set; }
