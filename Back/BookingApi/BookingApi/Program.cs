@@ -27,6 +27,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddCors();
 
+builder.Services.AddDirectoryBrowser();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -71,8 +72,8 @@ builder.Services.AddSwaggerGen(swagger =>
                 });
 });
 
-        
 
+builder.Services.AddDirectoryBrowser();
 var app = builder.Build();
 
 
@@ -87,12 +88,21 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(s=>s.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseStaticFiles();
+
+
+var fileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "Images"));
+var requestPath = "/Images";
+
+
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath, "Images")),
-    RequestPath = "/Images"
-}) ;
+    FileProvider = fileProvider,
+    RequestPath = requestPath
+});
+
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();

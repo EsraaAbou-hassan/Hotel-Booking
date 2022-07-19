@@ -360,19 +360,20 @@ namespace BookingApi.Controllers
                 List<HotelFeatures> HotelFeatures = _context.HotelFeatures.Include(u => u.Feature).Where(J => J.HotelId == hotels[i].HotelId).ToList();
                 List<HoteImages> HoteImages = _context.HoteImages.Where(J => J.HotelId == hotels[i].HotelId).ToList();
                 List<Feature> Features = new List<Feature>();
-
-                for (var ii = 0; ii < HotelFeatures.Count; ii++)
+                List<HoteImages> ImagesWithPath = new List<HoteImages>();
+                for (var j = 0; j < HoteImages.Count; j++)
                 {
-                    Feature Feature= new Feature();
-
-                    Feature = _context.Features.FirstOrDefault(J => J.FeatureId == HotelFeatures[ii].FeatureId);
-                    Features.Add(Feature);  
-
+                    HoteImages ImageWithPath = new HoteImages();
+                    ImageWithPath.Id = HoteImages[j].Id;
+                    ImageWithPath.Name = String.Format("{0}://{1}{2}/Images/Hotels/{3}", Request.Scheme, Request.Host, Request.PathBase, HoteImages[j].Name);
+                    Console.WriteLine(ImageWithPath.Name);
+                    ImagesWithPath.Add(ImageWithPath);
                 }
+
 
                 HotelData HotelData = new HotelData();
                 HotelData.hotelData = Hotel;
-                HotelData.hotelImages = HoteImages;
+                HotelData.hotelImages = ImagesWithPath;
                 HotelData.hotelFeatures = HotelFeatures;
                 HotelData.Feature = Features;
                 HotelsData.Add(HotelData);
@@ -391,18 +392,20 @@ namespace BookingApi.Controllers
                 List<RoomImages> RoomImages = _context.RoomImages.Where(J => J.RoomId == rooms[i].RoomId).ToList();
                 List<Service> services = new List<Service>();
 
-                for (var ii = 0; ii < RoomService.Count; ii++)
+                List<RoomImages> ImagesWithPath = new List<RoomImages>();
+
+                for (var j = 0; j < RoomImages.Count; j++)
                 {
-                    Service service = new Service();
-
-                    service = _context.Services.FirstOrDefault(J => J.ServiceId == RoomService[ii].ServiceId);
-                    services.Add(service);
-
+                    RoomImages ImageWithPath = new RoomImages();
+                    ImageWithPath.Id = RoomImages[j].Id;
+                    ImageWithPath.Name = String.Format("{0}://{1}{2}/Images/Rooms/{3}", Request.Scheme, Request.Host, Request.PathBase, RoomImages[j].Name);
+                    Console.WriteLine(ImageWithPath.Name);
+                    ImagesWithPath.Add(ImageWithPath);
                 }
 
                 RoomData roomData = new RoomData();
                 roomData.roomData = room;
-                roomData.roomImages = RoomImages;
+                roomData.roomImages = ImagesWithPath;
                 roomData.roomService = RoomService;
                 roomData.Service = services;
                 roomsData.Add(roomData);

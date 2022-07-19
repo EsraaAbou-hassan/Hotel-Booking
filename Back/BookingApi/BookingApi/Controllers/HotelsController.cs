@@ -126,13 +126,14 @@ namespace BookingApi.Controllers
                     _context.SaveChanges();
                 }
 
+                int[] features = hotel.Features.Substring(1, hotel.Features.Length - 2).Split(',').Select(c => int.Parse(c)).ToArray();
 
-                for (var i = 0; i < hotel.Features?.Length; i++)
+                for (var i = 0; i < features?.Length; i++)
                 {
                     HotelFeatures hotelFeatures = new HotelFeatures();
                     hotelFeatures.HotelId = id;
 
-                    hotelFeatures.FeatureId = hotel.Features[i];
+                    hotelFeatures.FeatureId = features[i];
 
                     _context.HotelFeatures.Add(hotelFeatures);
 
@@ -343,13 +344,25 @@ namespace BookingApi.Controllers
                 {
                     Feature Feature = new Feature();
 
+
+
                     Feature = _context.Features.FirstOrDefault(J => J.FeatureId == HotelFeatures[ii].FeatureId);
                     Features.Add(Feature);
                 }
+                List<HoteImages> ImagesWithPath = new List<HoteImages>();
+                for (var j = 0; j < HoteImages.Count; j++)
+                {
+                    HoteImages ImageWithPath = new HoteImages();
+                    ImageWithPath.Id = HoteImages[j].Id;
+                    ImageWithPath.Name = String.Format("{0}://{1}{2}/Images/Hotels/{3}", Request.Scheme, Request.Host, Request.PathBase, HoteImages[j].Name);
+                    Console.WriteLine(ImageWithPath.Name);
+                    ImagesWithPath.Add(ImageWithPath);
+                }  
+
 
                 HotelData HotelData = new HotelData();
                 HotelData.hotelData = Hotel;
-                HotelData.hotelImages = HoteImages;
+                HotelData.hotelImages = ImagesWithPath;
                 HotelData.hotelFeatures = HotelFeatures;
                 HotelData.Feature = Features;
                 HotelsData.Add(HotelData);

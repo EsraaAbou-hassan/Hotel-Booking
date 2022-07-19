@@ -69,7 +69,6 @@ namespace BookingApi.Controllers
         [HttpPut("Update/{id}")]
         public async Task<IActionResult> UpdateRoom(int id, [FromForm] RoomViewModel nroom)
 
-        // public async Task<IActionResult> UpdateRoom(int id, RoomViewModel nroom)
         {
             Room room = await _context.Rooms.FindAsync(id);
             List<RoomImages> oldImages = await _context.RoomImages.ToListAsync();
@@ -151,13 +150,14 @@ namespace BookingApi.Controllers
                     _context.SaveChanges();
                 }
 
+                int[] services = nroom.Services.Substring(1, nroom.Services.Length - 2).Split(',').Select(c => int.Parse(c)).ToArray();
 
-                for (var i = 0; i < nroom.Services?.Length; i++)
+                for (var i = 0; i < services?.Length; i++)
                 {
                     RoomService roomService = new RoomService();
                     roomService.RoomId = id;
 
-                    roomService.ServiceId = nroom.Services[i];
+                    roomService.ServiceId = services[i];
 
                     _context.RoomServices.Add(roomService);
 
@@ -236,10 +236,10 @@ namespace BookingApi.Controllers
                     {
 
 
-                        if (Services[i].ServiceId == services[ii])
+                        if (services[i] == Services[ii].ServiceId)
                         {
                             RoomService roomService = new RoomService();
-                            roomService.ServiceId = nroom.Services[ii];
+                            roomService.ServiceId = Services[ii].ServiceId;
                             roomService.RoomId = room.RoomId;
 
                             _context.RoomServices.Add(roomService);
@@ -361,10 +361,20 @@ namespace BookingApi.Controllers
                     service = _context.Services.FirstOrDefault(J => J.ServiceId == RoomService[ii].ServiceId);
                     services.Add(service);
                 }
+                List<RoomImages> ImagesWithPath = new List<RoomImages>();
+
+                for (var j = 0; j < RoomImages.Count; j++)
+                {
+                    RoomImages ImageWithPath = new RoomImages();
+                    ImageWithPath.Id = RoomImages[j].Id;
+                    ImageWithPath.Name = String.Format("{0}://{1}{2}/Images/Rooms/{3}", Request.Scheme, Request.Host, Request.PathBase, RoomImages[j].Name);
+                    Console.WriteLine(ImageWithPath.Name);
+                    ImagesWithPath.Add(ImageWithPath);
+                }
 
                 RoomData roomData = new RoomData();
                 roomData.roomData = room;
-                roomData.roomImages = RoomImages;
+                roomData.roomImages = ImagesWithPath;
                 roomData.roomService = RoomService;
                 roomData.Service = services;
                 roomsData.Add(roomData);
