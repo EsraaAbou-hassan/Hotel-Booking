@@ -227,7 +227,6 @@ namespace BookingApi.Controllers
                                 hotelFeatures.FeatureId = feature[i].FeatureId;
                                  
                                 _context.HotelFeatures.Add(hotelFeatures);
-                                _context.SaveChangesAsync();
 
                             }
                             else
@@ -239,6 +238,7 @@ namespace BookingApi.Controllers
                 
                     
             }
+            _context.SaveChangesAsync();
 
 
             return Ok("Data Added Successfully");
