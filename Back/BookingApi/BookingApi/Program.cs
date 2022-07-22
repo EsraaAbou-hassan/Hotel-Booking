@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using BookingApi.Models;
+using BookingApi.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
+using BookingApi;
 //using System.Web.HttpUtility.Cors;
 
 
@@ -24,7 +27,7 @@ builder.Services.AddDbContext<Bookingdb>(a => { a.UseSqlServer(builder.Configura
 
 builder.Services.AddIdentity<User, IdentityRole>()
 .AddEntityFrameworkStores<Bookingdb>();
-
+//builder.Services.AddScoped<RoleServices,RoleServices>();
 builder.Services.AddCors();
 
 builder.Services.AddDirectoryBrowser();
@@ -74,6 +77,7 @@ builder.Services.AddSwaggerGen(swagger =>
 
 
 builder.Services.AddDirectoryBrowser();
+
 var app = builder.Build();
 
 
@@ -99,12 +103,12 @@ app.UseStaticFiles(new StaticFileOptions
     FileProvider = fileProvider,
     RequestPath = requestPath
 });
-
-
+RoleServices RoleServices = new RoleServices();
+RoleServices.CreatedRole_User();
+//app.UseMiddleware<RoleServices>();
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

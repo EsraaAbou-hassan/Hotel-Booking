@@ -30,7 +30,7 @@ function Register({setUpData}){
         USERACCOUNT.register(data)
         .then(res=>{
             console.log(res)
-            //localStorage.setItem("registerData",JSON.stringify(data));
+            localStorage.setItem("registerData",JSON.stringify(data));
         })
         .catch(err=>{
             console.log(err);

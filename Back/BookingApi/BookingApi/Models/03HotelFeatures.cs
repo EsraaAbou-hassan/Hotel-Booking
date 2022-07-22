@@ -4,7 +4,7 @@ namespace BookingApi.Models
 {
     public class HotelFeatures
     {
-        public int FeatureId { get; set; }
+        public int FeatureId { get; set; } 
 
         public int HotelId { get; set; }
         [JsonIgnore]

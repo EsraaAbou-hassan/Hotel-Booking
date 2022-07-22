@@ -88,6 +88,8 @@ namespace BookingApi.Controllers
                     }
                     return BadRequest(ModelState);
                 }
+                _userManager.AddToRoleAsync(user, "User");
+
                 return Ok("Acount Add Success");
 
             }

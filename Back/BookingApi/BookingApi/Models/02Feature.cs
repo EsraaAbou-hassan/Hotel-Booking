@@ -6,7 +6,7 @@ namespace BookingApi.Models
     {
 
         public int FeatureId { get; set; }
-        [Required]
+        
         public string Name { get; set; }
         public IList<HotelFeatures> HotelFeatures { get; set; }
 

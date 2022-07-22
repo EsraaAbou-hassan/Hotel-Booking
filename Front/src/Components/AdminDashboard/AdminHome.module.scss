@@ -3,6 +3,23 @@
     height: 100%;
     padding: 0;
     margin: 0;
+    .logOut{
+        text-decoration: none;
+
+    }
+    .logOut:hover{
+        color: rgb(131, 131, 131);
+    }
+    // .myContent{
+    //     margin-bottom: 200px;
+    // }
+    // .body{
+    //     text-align: center;
+    //     h2{
+    //         margin-top: 100px;
+    //     }
+    // }
+
     a{
         color: rgb(87, 86, 86);
     }
@@ -39,7 +56,7 @@
         }
         tbody td{
             border-bottom: 1px solid #ccc;
-            padding: 10px 2px;
+            padding: 10px 5px;
         }
         .details{
             text-decoration: none;
@@ -91,6 +108,10 @@
     }
     
    
+    .notify{
+        background-color: #fff;
+        color: black;
+    }
     @media screen and  (min-width:0px){
         .sideBar{
             background-color: #fff;
@@ -109,8 +130,10 @@
     @media screen and  (min-width:678px){
         .sideBar{
               background-color:rgb(54, 54, 54);;
-              height: 100vh;
+              height: 140vh;
+             
         }
+       
         table{
             width: 100%;
         }

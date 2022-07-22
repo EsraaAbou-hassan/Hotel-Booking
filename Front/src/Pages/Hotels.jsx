@@ -3,10 +3,10 @@ import React, { Fragment } from 'react';
 import SecHeader from '../Components/SecondHeader/SecondHeader';
 import List from '../Components/ListHotels/List';
 import Footer from '../Components/Footer/Footer';
-function ListHotels(){
+function ListHotels({myStatus,logData,upData}){
     return(
         <Fragment>
-            <SecHeader/>
+            <SecHeader myStatus={myStatus} logData={logData} upData={upData}/>
             <List/>
             <Footer/>
         </Fragment>

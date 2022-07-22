@@ -1,12 +1,32 @@
 .container{
     .h2{
-        color: #F56D91;
+        color: #327885;
     }
     .items{
+        .card{
+            .card-title{
+                font-weight:600px;
+            }
+            .card-footer{
+                ul{
+                    padding-left:0px;
+                }
+            }
+        }
         position: relative;
         .img{
-            border-radius: 10px;  
-        }    
+            border-radius: 10px; 
+            
+        }  img{
+            height:200px; 
+
+        }
+        
+        .book-btn{
+            .custom-btn{
+                background-color:#327885 !important;
+            }
+    }
     }
     .overlay{
         position: absolute;
@@ -23,10 +43,12 @@
         border-top-left-radius: 0;
         border-top-right-radius:0;
     }
-   
+    
+  
    
 }
 .divider{
     border-bottom: 1px solid #808a86;
     margin-top: 30px;
 }
+

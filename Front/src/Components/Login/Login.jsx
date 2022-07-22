@@ -36,13 +36,15 @@ function Login({setStatus,setLogData}){
         
         const respone=USERACCOUNT.login(data)
             .then(res=>{
-                console.log(data)
-                if(data){
+                if(data.UserName=="Admin"){
+                    navigate('/admin');
+                }   
+                else{
                     setStatus(true);
                     setLogData(data.UserName);
                     localStorage.setItem("userLogin",JSON.stringify(data))
-                    navigate('/home');
-                }      
+                    navigate('/home')
+                }   
             })
             .catch(err=>{
                 if(!err?.respone){
@@ -127,8 +129,6 @@ function Login({setStatus,setLogData}){
                                         <div className='mb-4'>
                                             <span className={styles.para}>Not Sign in? </span>
                                             <Link className={styles.link} to='/register'>Sign up</Link>
-
-
                                         </div>
                                         
                                     </div>

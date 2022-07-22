@@ -42,7 +42,7 @@ namespace BookingApi.Controllers
             return HotelsData;
 
         }
-        [HttpGet("Top Rating")]
+        [HttpGet("TopRating")]
         public async Task<ActionResult<IEnumerable<HotelData>>> GetTopRatingOFHotels()
         {
             List<HotelData> HotelsData = new List<HotelData>();
@@ -98,34 +98,51 @@ namespace BookingApi.Controllers
             oldhotel.cheapestPrice = hotel.cheapestPrice != 0 ? hotel.cheapestPrice: oldhotel.cheapestPrice;
             oldhotel.rating = hotel.rating !=5 ? hotel.rating: oldhotel.rating;
         
-            _context.Entry(oldhotel).State = EntityState.Modified;
-            string[] images = UpdateImge(hotel.ImagesFile);
+            string[] images = UpdateImge(hotel.ImagesFile, id);
 
 
-
-
-            for (var i = 0; i < images?.Length; i++)
+                 for (var i = 0; i < images?.Length; i++)
             {
-
-                if (_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+                for (var j = 0; j < oldImages.Count; j++)
                 {
-                    HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
+                    if (_context.HoteImages.FirstOrDefault(r => r.HotelId == oldhotel.HotelId) != null)
+                    {
+                        HoteImages HotelImages = _context.HoteImages.FirstOrDefault(r => r.Id == oldImages[j].Id && r.HotelId == id);
+                        if (HotelImages != null)
+                        {
 
-                    //HotelImages.HotelId = oldImages[i].HotelId;
-                    HotelImages.Name = images[i] != null ? images[i] : oldImages[i].Name;
-                    _context.Entry(HotelImages).State = EntityState.Modified;
+
+                            HotelImages.HotelId = oldhotel.HotelId;
+
+                            //roomImages.Name = oldImages[j].Name != images[i] && images[i] != null ? images[i] : oldImages[j].Name;
+                            HotelImages.Name = images[i];
+
+                            _context.Entry(HotelImages).State = EntityState.Modified;
+                        }
+                    }
+                    else
+                    {
+                        HoteImages HoteImages = new HoteImages();
+                        HoteImages.HotelId = oldhotel.HotelId;
+                        HoteImages.Name = images[i];
+                        _context.HoteImages.Add(HoteImages);
+
+
+                    }
+                    _context.SaveChanges();
+
                 }
-
-
             }
-            if (hotel.Features[0] !=0) {
+
+
+            if (hotel.Features[0] != 0) {
                 for (var ii = 0; ii < oldFeature.Count; ii++)
                 {
 
                     _context.HotelFeatures.Remove(oldFeature[ii]);
                     _context.SaveChanges();
                 }
-
+            } if (hotel.Features.Length > 0) {
                 int[] features = hotel.Features.Substring(1, hotel.Features.Length - 2).Split(',').Select(c => int.Parse(c)).ToArray();
 
                 for (var i = 0; i < features?.Length; i++)
@@ -142,8 +159,17 @@ namespace BookingApi.Controllers
                 }
 
 
+
+            } else
+            {
+                oldhotel.HotelFeatures = oldFeature;
             }
-                        
+
+            _context.Entry(oldhotel).State = EntityState.Modified;
+
+
+
+
 
             try
             {
@@ -194,7 +220,7 @@ namespace BookingApi.Controllers
           }
             _context.Hotels.Add(newhotel);
             await _context.SaveChangesAsync();
-            string[] images = UpdateImge(hotel.ImagesFile);
+            string[] images = UpdateImge(hotel.ImagesFile, newhotel.HotelId);
 
 
 
@@ -301,23 +327,18 @@ namespace BookingApi.Controllers
 
             
         }
-        private string[] UpdateImge(IFormFile[] ImageFiles)
+        
+        private string[] UpdateImge(IFormFile[] ImageFiles, int HotelId)
         {
-
+            
             string[] images = new string[ImageFiles.Length];
             for (var i = 0; i < ImageFiles.Length; i++)
             {
-                images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
-                    .Take(10).ToArray())
-                    .Replace(" ", "-");
-                string extention = Path.GetExtension(ImageFiles[i].FileName);
-                images[i] += DateTime.Now.ToString("yymmssfff")+extention;
-                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Hotels", images[i]);
-                using (FileStream fs = new FileStream(imgPath, FileMode.Create))
+                string[] arr = ImageFiles[i].FileName.Split('.');
+                images[i] = HotelId.ToString() + ImageFiles[i]+ "." + arr[arr.Length - 1];
+                using (var std = new FileStream("./wwwroot/Images/Hotels/" + images[i], FileMode.Create))
                 {
-                    ImageFiles[i].CopyToAsync(fs);
-
-
+                    ImageFiles[i].CopyTo(std);
                 }
 
             }

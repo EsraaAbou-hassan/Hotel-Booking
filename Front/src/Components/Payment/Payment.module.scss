@@ -1,5 +1,15 @@
-
+.container{
     .notify{
         background-color: #fff;
         color: black;
     }
+    .validate{
+        width: 100%;
+        //height: 35px;
+        margin-top: 10px;
+        background-color: #F8D7DA;
+        color: #842057;
+        line-height: 2;
+        border-radius: 5px;
+      }
+}

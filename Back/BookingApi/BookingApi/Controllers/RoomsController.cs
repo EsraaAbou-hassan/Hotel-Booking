@@ -86,8 +86,7 @@ namespace BookingApi.Controllers
             room.maxPeople = nroom.maxPeople != 0 ? nroom.maxPeople : room.maxPeople;
             _context.Entry(room).State = EntityState.Modified;
 
-            string[] images = UpdateImge(nroom.ImagesFile);
-
+            string[] images = UpdateImge(nroom.ImagesFile, id);
 
 
 
@@ -95,17 +94,35 @@ namespace BookingApi.Controllers
 
             for (var i = 0; i < images?.Length; i++)
             {
-
-                if (_context.RoomImages.FirstOrDefault(r => r.RoomId == room.RoomId) != null)
+                for (var j = 0; j < oldImages.Count; j++)
                 {
-                    RoomImages roomImages = _context.RoomImages.FirstOrDefault(r => r.Name == oldImages[i].Name);
-                    roomImages.RoomId = room.RoomId;
+                    if (_context.RoomImages.FirstOrDefault(R => R.RoomId == room.RoomId) != null)
+                    {
+                        RoomImages roomImages = _context.RoomImages.FirstOrDefault(r => r.Id == oldImages[j].Id && r.RoomId == id);
+                        if (roomImages != null)
+                        {
 
-                    roomImages.Name = images[i] != null ? images[i] : oldImages[i].Name;
-                    _context.Entry(roomImages).State = EntityState.Modified;
+
+                            roomImages.RoomId = room.RoomId;
+
+                            //roomImages.Name = oldImages[j].Name != images[i] && images[i] != null ? images[i] : oldImages[j].Name;
+                            roomImages.Name = images[i];
+
+                            _context.Entry(roomImages).State = EntityState.Modified;
+                        }
+                    }
+                        else
+                        {
+                            RoomImages roomImage = new RoomImages();
+                            roomImage.RoomId = room.RoomId;
+                            roomImage.Name = images[i];
+                            _context.RoomImages.Add(roomImage);
+
+
+                        }
+                    _context.SaveChanges();
+
                 }
-
-
             }
             if (oldroomsInHotels.Count > 0)
             {
@@ -215,7 +232,7 @@ namespace BookingApi.Controllers
                 roomsInHotel.Price = nroom.Price;
                 _context.RoomsInHotel.Add(roomsInHotel);
                 await _context.SaveChangesAsync();
-                string[] images = UpdateImge(nroom.ImagesFile);
+                string[] images = UpdateImge(nroom.ImagesFile, room.RoomId);
                 RoomImages roomImages;
 
                 for (var i = 0; i < images.Length; i++)
@@ -302,14 +319,14 @@ namespace BookingApi.Controllers
 
 
 
-            List<RoomsInHotel> roomsInHotels = _context.RoomsInHotel.ToList();
-            for (var h = 0; h < roomsInHotels.Count; h++)
-            {
-                RoomsInHotel roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId);
-                if (roomsInHotel != null)
-                    _context.RoomsInHotel.Remove(roomsInHotel);
+            //List<RoomsInHotel> roomsInHotels = _context.RoomsInHotel.ToList();
+            //for (var h = 0; h < roomsInHotels.Count; h++)
+            //{
+            //    RoomsInHotel roomsInHotel = _context.RoomsInHotel.FirstOrDefault(s => s.HotelId == roomsInHotels[h].HotelId && s.RoomId == roomsInHotels[h].RoomId);
+            //    if (roomsInHotel != null)
+            //        _context.RoomsInHotel.Remove(roomsInHotel);
 
-            }
+            //}
             _context.Rooms.Remove(room);
 
             await _context.SaveChangesAsync();
@@ -317,21 +334,17 @@ namespace BookingApi.Controllers
 
 
         }
-        private string[] UpdateImge(IFormFile[] ImageFiles)
+        private string[] UpdateImge(IFormFile[] ImageFiles, int RoomId)
         {
 
             string[] images = new string[ImageFiles.Length];
             for (var i = 0; i < ImageFiles.Length; i++)
             {
-                images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
-                    .Take(10).ToArray())
-                    .Replace(" ", "-");
-                string extention = Path.GetExtension(ImageFiles[i].FileName);
-                images[i] += DateTime.Now.ToString("yymmssfff") + extention;
-                var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Rooms", images[i]);
-                using (FileStream fs = new FileStream(imgPath, FileMode.Create))
+                string[] arr = ImageFiles[i].FileName.Split('.');
+                images[i] = RoomId.ToString()+ ImageFiles[i] + "." + arr[arr.Length - 1];
+                using (var std = new FileStream("./wwwroot/Images/Rooms/" + images[i], FileMode.Create))
                 {
-                    ImageFiles[i].CopyToAsync(fs);
+                    ImageFiles[i].CopyTo(std);
                 }
 
             }
@@ -339,6 +352,28 @@ namespace BookingApi.Controllers
 
 
         }
+        //private string[] UpdateImge(IFormFile[] ImageFiles)
+        //{
+
+        //    string[] images = new string[ImageFiles.Length];
+        //    for (var i = 0; i < ImageFiles.Length; i++)
+        //    {
+        //        images[i] = new String(Path.GetFileNameWithoutExtension(ImageFiles[i].FileName)
+        //            .Take(10).ToArray())
+        //            .Replace(" ", "-");
+        //        string extention = Path.GetExtension(ImageFiles[i].FileName);
+        //        images[i] += DateTime.Now.ToString("yymmssfff") + extention;
+        //        var imgPath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/Rooms", images[i]);
+        //        using (FileStream fs = new FileStream(imgPath, FileMode.Create))
+        //        {
+        //            ImageFiles[i].CopyToAsync(fs);
+        //        }
+
+        //    }
+        //    return images;
+
+
+        //}
         private bool RoomExists(int id)
         {
             return (_context.Rooms?.Any(e => e.RoomId == id)).GetValueOrDefault();

@@ -16,12 +16,29 @@
         height: 220px;
         opacity: 0.7;
         transition: 1s ease-in-out;
+        
     }
     img:hover{
         cursor: pointer;
         opacity: 1;
         transition: 1s ease-in-out;
         transform: scale(1.1);
+    }
+    .service{
+        text-align:center
+    }
+    .btnRes{
+        width:200px !important;
+        height: 40px;
+        background-color: #F56D91;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .btnRes:hover{
+        background-color: #fc8aa9;
     }
     @media screen and  (min-width:0px){
        img{

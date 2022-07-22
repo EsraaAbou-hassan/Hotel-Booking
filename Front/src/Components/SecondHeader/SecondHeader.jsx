@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import styles from './SecondHeader.module.scss';
-function SecHeader(){
+function SecHeader({myStatus,logData,upData}){
    return(
     <Fragment>
         <div className={styles.container}>
@@ -16,12 +17,12 @@ function SecHeader(){
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                  <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                  <Link className="nav-link active" aria-current="page" to='/home'>Home</Link>
                                 </li>
                             </ul>
                             <form>
-                                <button className='btn'>Log in</button>
-                                <button className='btn'>Sign up</button> 
+                                <button className='btn' style={{color:'#fff'}}>{myStatus? logData:upData}</button>
+                                <button className='btn'> {myStatus?"Log out":"Log in"}</button> 
                             </form>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using BookingApi.Models;
+using BookingApi.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,13 +11,16 @@ namespace BookingApi.database
 {
     public class Bookingdb : IdentityDbContext<User>
     {
-
+        
         public  IConfiguration Configuration { get; }
+        RoleServices roleServices = new RoleServices();
         public Bookingdb(DbContextOptions<Bookingdb> options, IConfiguration configuration)
             : base(options)
         {
             Configuration = configuration;
+
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -26,10 +30,11 @@ namespace BookingApi.database
             modelBuilder.Entity<HotelFeatures>().HasKey(sc => new { sc.FeatureId, sc.HotelId });
             modelBuilder.Entity<RoomService>().HasKey(sc => new { sc.ServiceId, sc.RoomId });
 
-
+            
 
 
         }
+       
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(option =>
@@ -58,6 +63,8 @@ namespace BookingApi.database
 
             }
     );
+
+            roleServices.CreatedRole_User();
 
         }
         public virtual DbSet<Hotel> Hotels { get; set; }

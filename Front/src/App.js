@@ -24,12 +24,12 @@ function App() {
      <Routes>
         <Route path='/' exact element={<LoginScreen setStatus={setStatus} setLogData={setLogData}/>}/>
         <Route path='/home' exact element={<Home setStatus={setStatus} myStatus={status}  logData={logData} upData={upData}/>}/>
-        <Route path='/hotels' element={<Hotels/>}/>
-        <Route path='/rooms' element={<Rooms/>}/>
+        <Route path='/hotels' element={<Hotels myStatus={status}  logData={logData} upData={upData}/>}/>
+        <Route path='/rooms/:id' element={<Rooms myStatus={status}  logData={logData} upData={upData}/>}/>
         <Route path='/roomsdetails' element={<RoomsDetails/>}/>
         <Route path='/reserve' element={<Reserve/>}/>
         <Route path='/register' element={<RegisterScreen setUpData={setUpData}/>}/>
-        <Route path='/payment' element={<PaymentScreen/>}/>
+        <Route path='/payment/:id' element={<PaymentScreen/>}/>
         <Route path='/admin/*' element={<Admin/>}/>
      </Routes>
    </Fragment>
